@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+nav{
+    background-color: #ffffff;
+    border-bottom:0.5px solid #f2f2f2;
+    display: flex;
+    flex-direction: row;
+}
+nav div{
+display: flex;
+flex-direction: row;
+justify-content: end;
+}
+
+nav h1{
+    margin: 15px;
+    margin-right: 25px;
+    font-family: 'Montserrat Medium', sans-serif;
+    font-weight: 100;
+    font-size: 20px;
+    text-decoration: none;
+    text-align: center;
+}
+a{
+    text-decoration: none;
+    color: #0d0d0d;
+    transition: all 0.5s;
+}
+a:hover{
+    color: #52ab98;
+}
+nav img{
+    height: 50px;
+    margin: 5px;
+    margin-right: 60%;
+}
