@@ -1,13 +1,13 @@
 module.exports = (sequelize, dataTypes) =>{
     let alias = 'Photo'
     let columns = {
-        photo_pk: {
+        photo_id: {
             primaryKey: true,
             autoIncrement: true,
             type: dataTypes.INTEGER
         },
         description: {
-            type: dataTypes.VARCHAR(45),
+            type: dataTypes.STRING,
             allowNull: false
         },
         date: {
@@ -15,7 +15,7 @@ module.exports = (sequelize, dataTypes) =>{
             allowNull: false
         },
         link: {
-            type: dataTypes.VARCHAR(45),
+            type: dataTypes.STRING,
             allowNull: false
         },
     }

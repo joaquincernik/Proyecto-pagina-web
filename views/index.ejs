@@ -24,9 +24,23 @@
         </nav>
     </header>
 
+<% photos.map(photo=> {%>
+  <div class="album_box">
+    <h1><%= photo.description %></h1>
+    <img src="/images/<%=photo.link%>">
+    </div>  
+<%}); %>
+
+
+
+
     <footer>
         <div class="div_footer">
-        <h1>RGB Artes Graficas</h1>
+            <div class="footer_img">
+                <img src="/images/logo blanco.png" alt="">
+                <h1>RGB Artes Graficas</h1>
+            </div>
+      
         <div class="footer_logos">
         <div class="facebook">
             <a href="https://www.facebook.com/rossogustavo.com.ar/?fref=ts"><i class="fa fa-brands fa-facebook"></i></a>
