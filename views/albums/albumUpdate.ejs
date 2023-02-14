@@ -1,0 +1,30 @@
+<%- include('../partials/header')  %>
+
+
+
+
+<h1>EDITAR ALBUM</h1>
+<form action="/albums/update/<%= album.album_id %>" method="POST">
+
+    <div>
+    <label for="">NOMBRE</label>
+    <input type="text" name="name" value="<%= album.name %>" >
+</div>
+<div>
+    <label for="">FECHA</label>
+    <input type="date" name="date" value="<%= album.date %>">
+</div>
+<div>
+    <label for="">FOTO DE PORTADA</label>
+    <input class="fyle" type="file" accept=".jpg, .png, .jpeg, .svg" name="cover" id="image" value="<%= album.cover %>">
+</div>
+
+    <button type="submit">EDITAR</button>
+</form>
+
+<form method="POST" action="/albums/delete/<%= album.album_id %>">
+    <button type="submit">BORRAR ALBUM</button>
+</form>
+<a href="/albums/create/addPhoto/<%= album.album_id %>">AGREGAR FOTOS</a>
+<a href="/albums/delete/deletePhoto/<%= album.album_id %>">ELIMINAR FOTOS</a>
+<%- include('../partials/footer')  %>

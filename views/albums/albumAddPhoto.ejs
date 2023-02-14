@@ -1,0 +1,16 @@
+<%- include('../partials/header')  %>
+
+<h1 id="album_name"><%= album.name %></h1>
+<div class="photos_box">
+
+    <% album.photos.map(photo=> {%>
+        <img src="/images/<%= photo.link %>">
+    <%}); %>
+</div>
+
+
+<form method="POST" action="/albums/create/addPhoto/<%= album.album_id %>">
+    <input class="fyle" type="file" accept=".jpg, .png, .jpeg, .svg" name="images" multiple>
+    <button type="submit">AGREGAR FOTO/S</button>
+</form>
+<%- include('../partials/footer')  %>

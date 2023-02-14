@@ -6,7 +6,7 @@ const mainController={
             order:[
                 ['date','DESC']
             ],
-            limit:10
+            limit:8
         })
         .then(function(albums){
             

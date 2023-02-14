@@ -14,10 +14,9 @@ const albumsController={
             cover:req.body.cover,
             date:req.body.date
         });
-
-        
         res.redirect("/")
     },
+
     details:function(req,res){
         db.Albums.findByPk(req.params.id,{
             include:[{association:'photos'}]
@@ -33,7 +32,7 @@ const albumsController={
             order:[
                 ['date','DESC']
             ],
-            limit:10
+            
         })
         .then(function(albums){
             
@@ -41,6 +40,53 @@ const albumsController={
         }).catch(err=>{console.log(err)})
         },
 
+    update:(req,res)=>{
+        let albumRequest=db.Albums.findByPk(req.params.id)
+        let photoRequest=db.Photos.findAll({
+            where:{
+                album_id:req.params.id
+            }
+        })
+
+        Promise.all([albumRequest,photoRequest])
+            .then(function([album,photos]){
+                res.render("albums/albumUpdate",{album:album,photos:photos})
+            })
+    },
+    updateProcess:(req,res)=>{
+        console.log(req.body)
+        if(req.body.cover!==""){
+            db.Albums.update({
+            
+                name:req.body.name,
+                cover:req.body.cover,
+                date:req.body.date
+            },{
+                where:{
+                    album_id:req.params.id
+            }});   
+        }
+        else{
+            db.Albums.update({
+            
+                name:req.body.name,
+                date:req.body.date
+            },{
+                where:{
+                    album_id:req.params.id
+            }});   
+        }
+        
+        res.redirect("/")
+    },
+    delete:(req,res)=>{
+        db.Albums.destroy({
+            where:{
+                album_id:req.params.id
+            }
+        })
+        res.redirect("/")
+    },
     search:(req,res)=>{
         
         let toSearch=req.query.search
@@ -53,6 +99,57 @@ const albumsController={
             
             return res.render("albums/albumSearch",{albums,toSearch})
         }).catch(err=>{console.log(err)})
+        },
+
+    addPhoto:(req,res)=>{
+        db.Albums.findByPk(req.params.id,{
+            include:[{association:'photos'}]})
+            .then(function(album){
+                
+                res.render("albums/albumAddPhoto",{album})
+            }).catch(err=>{console.log(err)})
+    },
+    addPhotoProcess:(req,res)=>{
+        let images=[]
+        console.log(req.body)
+        images=req.body.images
+        console.log(req.body.images.length)
+        
+        if(Array.isArray(req.body.images)){
+            for(i=0;i<images.length;i++){
+                db.Photos.create({
+                    link:images[i],
+                    album_id:req.params.id
+                })
+            }
         }
+        else{
+                db.Photos.create({
+                    link:images,
+                    album_id:req.params.id
+                }) 
+        }
+       
+        res.redirect("/albums/"+req.params.id) 
+    },
+    deletePhoto:(req,res)=>{
+        db.Photos.findAll({
+            where:{
+                album_id:req.params.id
+            }
+        })
+            .then(function(photos){
+                res.render("albums/albumDeletePhoto",{photos:photos,id:req.params.id})
+            }).catch(err=>{console.log(err)})
+    },
+    deletePhotoProcess:(req,res)=>{
+        console.log(req.body)
+        db.Photos.destroy({
+            where:{
+                photo_id:req.body.button
+            }
+        }).then(res.redirect("/"))
+        
+    }
 }
 module.exports=albumsController;

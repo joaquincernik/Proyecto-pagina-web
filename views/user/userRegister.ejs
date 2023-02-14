@@ -1,0 +1,18 @@
+<%- include('../partials/header')  %>
+
+<h1>CREAR USUARIO</h1>
+<form action="/user/register" method="POST">
+
+    <div>
+    <label for="">NOMBRE DE USUARIO</label>
+    <input type="text" name="name" >
+</div>
+<div>
+    <label for="">CONTRASENA</label>
+    <input type="password" name="password" >
+</div>
+<button type="submit">CREAR</button>
+
+</form>
+
+<%- include('../partials/footer')  %>

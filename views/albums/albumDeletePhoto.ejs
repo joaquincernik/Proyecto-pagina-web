@@ -1,0 +1,18 @@
+<%- include('../partials/header')  %>
+
+
+<div class="photos_list_father">
+
+<% photos.map(photo=>{ %>
+<form method="post" action="/albums/delete/photo/<%= photo.photo_id %>">
+<div class="photos_list">
+    <img src="/images/<%= photo.link %>">
+    <p><%= photo.link %></p>    
+    <button name="button" value="<%= photo.photo_id %>" type="submit" >BORRAR</button>     
+</div>
+
+</form>
+<% }) %>
+
+</div>
+<%- include('../partials/footer')  %>

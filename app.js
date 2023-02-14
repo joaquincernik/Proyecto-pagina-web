@@ -14,9 +14,11 @@ const port=3000;
 
 const mainRouter=require('./routes/mainRouter')
 const albumsRouter=require('./routes/albumsRouter')
+const userRouter=require('./routes/userRouter')
 
 app.use("/",mainRouter)
 app.use("/albums",albumsRouter)
+app.use("/user",userRouter)
 /*app.get('/',(req,res)=>{
     res.sendFile(path.resolve(__dirname,"./views/index.html"));
 })*/
