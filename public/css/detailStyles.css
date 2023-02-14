@@ -1,0 +1,24 @@
+
+#album_name{
+    font-size: 40px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    margin: 10px;
+    color: #373e98;
+}
+.photos_box{
+    display: flex;
+  width: 50%;
+  height: 50%;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  align-items: center;
+  margin-left: 25%;
+}
+.photos_box img{
+flex: 0 0 100%;
+width: 100%;
+object-fit: cover;
+scroll-snap-align: center;
+}

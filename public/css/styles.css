@@ -2,12 +2,16 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+
 }
 body{
     background-color: #f2f2f2;
 }
 
+
 /*Header*/
+
 nav{
     background-color: #ffffff;
     border-bottom:0.5px solid #f2f2f2;
@@ -21,38 +25,98 @@ justify-content: end;
 }
 
 nav h1{
-    margin: 15px;
-    margin-right: 25px;
+    margin: 10px;
     font-family: 'Montserrat Medium', sans-serif;
     font-weight: 100;
     font-size: 20px;
     text-decoration: none;
     text-align: center;
 }
-a{
+ a {
     text-decoration: none;
     color: #0d0d0d;
     transition: all 0.5s;
 }
 a:hover{
    /* color: #52ab98;*/
-   color: #373e98;
+   color: #fee36e;
 }
 nav img{
     height: 50px;
     margin: 10px;
-    margin-right: 60%;
+    margin-right: 40%;
     margin-left: 5%;
 }
 
+.allPhotos,.home{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 15px;
+}
 
+.fa-home,.fa-camera{
+    color:#0d0d0d;
+}
+button{
+    border:0;
+    background-color: #ffffff;
+}
+form{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+}
+form input{
+  
+    height: 40px;
+    width: 220px;
+    margin-right: 5px;
+}
+/*fin de header*/
 
+.title_body{
+    text-align: center;
+    margin: 30px;
+    color: #2a2a2a;
+}
 
-
+.album_box_father{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+.album_box{
+    display: flex;
+    flex-wrap: wrap;
+    width: 25%;
+    justify-content: center;
+    border-top: 1px solid #ebebeb;
+    padding-left:15px;
+    padding-right:15px;
+    background-color:white;
+    padding-bottom: 10px;
+}
+.album_box img{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 15px;
+}
+.album_box h1{
+    font-size: 20px;
+    font-weight: 300;
+}
+.album_box p{
+    font-weight: 100;
+}
 
 
 /*footer*/
 footer {
+margin-top: 100px;
 background-color: #373e98;
 /*position: absolute;
 top: 100%;*/

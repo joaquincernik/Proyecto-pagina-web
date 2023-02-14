@@ -1,0 +1,12 @@
+<%- include('../partials/header')  %>
+
+<h1 id="album_name"><%= album.name %></h1>
+<div class="photos_box">
+
+    <% album.photos.map(photo=> {%>
+        <img src="/images/<%= photo.link %>">
+    <%}); %>
+</div>
+
+
+<%- include('../partials/footer')  %>

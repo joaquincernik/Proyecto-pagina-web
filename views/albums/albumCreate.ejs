@@ -1,0 +1,21 @@
+<%- include('../partials/header')  %>
+
+<h1>CREAR ALBUM</h1>
+<form action="/albums/create" method="POST">
+
+    <div>
+    <label for="">NOMBRE</label>
+    <input type="text" name="name" >
+</div>
+<div>
+    <label for="">FECHA</label>
+    <input type="date" name="date" >
+</div>
+<div>
+    <label for="">FOTO DE PORTADA</label>
+    <input class="fyle" type="file" accept=".jpg, .png, .jpeg, .svg" name="cover" id="image">
+</div>
+    <button type="submit">CREAR</button>
+</form>
+
+<%- include('../partials/footer')  %>
