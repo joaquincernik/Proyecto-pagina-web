@@ -1,0 +1,31 @@
+.register_box_father{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column; 
+}
+.register_box_father h1{
+    color: #2a2a2a;
+    text-align: center;
+    margin: 25px;
+}
+.register_box_father button{
+    background-color: #373e98;
+    color: #f2f2f2    ;
+    height: 40px;
+    width: 70px;
+    border-radius: 10%;
+    transition: all 0.5s;
+}
+.register_box_father button:hover{
+    background-color: #fee36e;    ;
+    
+}
+.register_box{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.register_box input {
+   margin-bottom: 30px;
+}

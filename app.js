@@ -19,6 +19,13 @@ const userRouter=require('./routes/userRouter')
 app.use("/",mainRouter)
 app.use("/albums",albumsRouter)
 app.use("/user",userRouter)
+
+//errors
+app.use((req,res,next)=>{
+    res.status(404).render("errors/not-found")
+    next();
+})
+
 /*app.get('/',(req,res)=>{
     res.sendFile(path.resolve(__dirname,"./views/index.html"));
 })*/

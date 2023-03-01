@@ -14,6 +14,14 @@ module.exports = (sequelize, dataTypes) =>{
             type: dataTypes.STRING,
             allowNull: false
         },
+        address: {
+            type: dataTypes.STRING,
+            allowNull: false
+        },
+        email: {
+            type: dataTypes.STRING,
+            allowNull: false
+        },
     }
     let config = {
         tableName: 'User',

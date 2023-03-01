@@ -1,18 +1,25 @@
 <%- include('../partials/header')  %>
 
+<div class="register_box_father">
 <h1>CREAR USUARIO</h1>
-<form action="/user/register" method="POST">
 
-    <div>
-    <label for="">NOMBRE DE USUARIO</label>
+<form class="register_box" action="/user/register" method="POST">
+    
+    <label for="name">NOMBRE DE USUARIO:</label>
     <input type="text" name="name" >
-</div>
-<div>
-    <label for="">CONTRASENA</label>
+
+    <label for="email">EMAIL:</label>
+    <input type="email" name="email" >
+
+    <label for="address">DIRECCION:</label>
+    <input type="text" name="address" >
+
+    <label for="password">CONTRASENA:</label>
     <input type="password" name="password" >
-</div>
-<button type="submit">CREAR</button>
+
+    <button type="submit">CREAR</button>
 
 </form>
+</div>
 
 <%- include('../partials/footer')  %>
