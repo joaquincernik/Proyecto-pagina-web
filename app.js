@@ -7,14 +7,28 @@ app.use(methodOverride("_method"))
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: false }));
 app.set("view engine","ejs")
+
+//cookie y session
+const session = require('express-session')
+const cookies = require('cookie-parser')
+app.use(cookies())
+app.use(session({
+    secret: 'Es una frase secreta',
+    resave: false,
+    saveUninitialized: false
+}))
+const userLoggedMiddleware=require("./middlewares/userLoggedMiddleware")
+app.use(userLoggedMiddleware)
+
 const port=3000;
 //const publicPath= path.join(__dirname,"/public")
-
 
 
 const mainRouter=require('./routes/mainRouter')
 const albumsRouter=require('./routes/albumsRouter')
 const userRouter=require('./routes/userRouter')
+
+
 
 app.use("/",mainRouter)
 app.use("/albums",albumsRouter)

@@ -1,0 +1,29 @@
+<%- include('../partials/header')  %>
+
+<div class="register_box_father">
+<h1>INICIAR SESION</h1>
+
+<form class="register_box" action="/user/login" method="POST">
+    
+    <% if (locals.errors && errors.email) { %>
+        <span class="barra">
+            <%= errors.email.msg %>
+        </span>
+        <% } %>
+    <label for="email">EMAIL:</label>
+    <input type="text" name="name" value="<%= locals.oldData ? oldData.email : null %>">
+
+    <% if (locals.errors && errors.password) { %>
+        <span class="barra">
+            <%= errors.password.msg %>
+        </span>
+        <% } %>
+    <label for="password">CONTRASENA:</label>
+    <input type="password" name="password" >
+
+    <button type="submit">CREAR</button>
+
+</form>
+</div>
+
+<%- include('../partials/footer')  %>
