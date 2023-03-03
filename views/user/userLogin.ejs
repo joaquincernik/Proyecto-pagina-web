@@ -11,7 +11,7 @@
         </span>
         <% } %>
     <label for="email">EMAIL:</label>
-    <input type="text" name="name" value="<%= locals.oldData ? oldData.email : null %>">
+    <input type="email" name="email" value="<%= locals.oldData ? oldData.email : null %>">
 
     <% if (locals.errors && errors.password) { %>
         <span class="barra">

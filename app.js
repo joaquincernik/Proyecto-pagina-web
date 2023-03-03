@@ -18,7 +18,10 @@ app.use(session({
     saveUninitialized: false
 }))
 const userLoggedMiddleware=require("./middlewares/userLoggedMiddleware")
+const isAdminMiddleware=require("./middlewares/isAdminMiddleware")
+
 app.use(userLoggedMiddleware)
+app.use(isAdminMiddleware)
 
 const port=3000;
 //const publicPath= path.join(__dirname,"/public")
@@ -26,8 +29,7 @@ const port=3000;
 
 const mainRouter=require('./routes/mainRouter')
 const albumsRouter=require('./routes/albumsRouter')
-const userRouter=require('./routes/userRouter')
-
+const userRouter=require('./routes/userRouter');
 
 
 app.use("/",mainRouter)

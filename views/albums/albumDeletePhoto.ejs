@@ -4,7 +4,7 @@
 <div class="photos_list_father">
 
 <% photos.map(photo=>{ %>
-<form method="post" action="/albums/delete/photo/<%= photo.photo_id %>">
+<form method="post" action="/albums/admin/delete/photo/<%= photo.photo_id %>">
 <div class="photos_list">
     <img src="/images/<%= photo.link %>">
     <p><%= photo.link %></p>    

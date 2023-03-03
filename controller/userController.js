@@ -25,7 +25,9 @@ const userController={
 			where: { email: req.body.email }
 		})
         .then(userInDB=>{
-            if( userInDB.length > 0 ){
+
+        
+            if(userInDB.length > 0 ){
                 
                 return res.render('user/userRegister', {
                     
@@ -37,20 +39,24 @@ const userController={
                     oldData: req.body
                 })
             }
+            else{ 
+                
+            
+                let row={
+                    name:req.body.name,
+                    password:bcrypt.hashSync(req.body.password, 10),
+                    address:req.body.address,
+                    email:req.body.email,
+                }
+                db.Users.create(row)
+                    .then(user=>{
+                    delete user.password
+                });
+                req.session.userLogged=row
+                res.redirect("/")}
+            
+            
         })
-            console.log(resultValidations);
-            let row={
-                name:req.body.name,
-                password:bcrypt.hashSync(req.body.password, 10),
-                address:req.body.address,
-                email:req.body.email,
-            }
-            db.Users.create(row)
-                .then(user=>{
-                delete user.password
-            });
-            req.session.userLogged=row
-            res.redirect("/")
     },
     login:(req,res)=>{
         res.render("user/userLogin")
@@ -68,16 +74,19 @@ const userController={
 
         db.Users.findAll({
             where:{email:req.body.email}
-        }).then(userInDB=>{
-            if(userInDB.length>0){
-                let isOkThePassword = bcrypt.compareSync(req.body.password, userInDB.password)
+        }).then(user=>{
+            
+            if(user.length>0){
+
+                
+                let isOkThePassword = bcrypt.compareSync(req.body.password, user[0].dataValues.password)
                 if( isOkThePassword ){
                     //Se inicicaliza la variable de sesión
                     //Se elimina la propiedad password de la sesión por seguridad
-                    delete userInDB.password
+                    delete user.password
                    
                     //Genera una sessión con el usuario logueado, lo que no tiene es el password por seguridad.
-                    req.session.userLogged = userInDB
+                    req.session.userLogged = user
     
                     //Si el usuario solicito recordar su usuario, se genera una cookie.
                    
@@ -96,7 +105,7 @@ const userController={
                 }//si no encuentra el user
                 else{
             
-                    res.render('users/login', {
+                    res.render('user/userLogin', {
                         errors: {
                             email: 
                             { 
@@ -107,6 +116,12 @@ const userController={
                 }
             
         })
+    },
+    logout:(req,res)=>{
+        res.clearCookie('user')
+		//Se destruye la sesión
+		req.session.destroy()
+		return res.redirect('/')
     },
 }
 

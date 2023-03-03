@@ -1,4 +1,4 @@
-
+let db=require("../database/models")
 async function userLoggedMiddleware(req,res,next){
      //1. Permite buscar si existe una cookie, si existe habilita la sessión.
     //2. Pregunta si se tiene una sessión.
@@ -15,7 +15,7 @@ async function userLoggedMiddleware(req,res,next){
 			where: { email: userEmailInCookie }
 		});
 
-        delete userFromCookie[0].password
+        delete userFromCookie.password
     }
        
         if( userFromCookie){
@@ -23,13 +23,14 @@ async function userLoggedMiddleware(req,res,next){
         }
       //Variable de control de usuario legueado.
       res.locals.isLogged = false
+     
       if(req.session && req.session.userLogged){
           res.locals.isLogged = true
           //console.log(req.session.userLogged);
           res.locals.userLogged = req.session.userLogged
       }
   
-      console.log(res.locals);
+    
     next()
 }
 module.exports=userLoggedMiddleware

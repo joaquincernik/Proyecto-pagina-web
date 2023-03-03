@@ -12,4 +12,6 @@ router.post("/register",registerMiddleware,userController.registerProcess)
 router.get("/login",userController.login)
 router.post("/login",loginMiddleware,userController.loginProcess)
 
+//logout
+router.get("/logout",userController.logout)
 module.exports=router;

@@ -1,24 +1,26 @@
 const express = require('express')
 const router = express.Router()
 const albumsController=require("../controller/albumsController")
-
+const isAdminRoutesMiddleware=require("../middlewares/isAdminRoutesMiddleware")
 //crear albums
-router.get('/create',albumsController.create)
-router.post('/create',albumsController.createProcess)
+router.get('/admin/create',isAdminRoutesMiddleware,albumsController.create)
+router.post('/admin/create',isAdminRoutesMiddleware,albumsController.createProcess)
 
+//admin
+router.get("/admin/adminView",isAdminRoutesMiddleware,albumsController.listAdmin)
 //anadir fotos
-router.get("/create/addPhoto/:id",albumsController.addPhoto)
-router.post("/create/addPhoto/:id",albumsController.addPhotoProcess)
+router.get("/admin/create/addPhoto/:id",isAdminRoutesMiddleware,albumsController.addPhoto)
+router.post("/admin/create/addPhoto/:id",isAdminRoutesMiddleware,albumsController.addPhotoProcess)
 
 //editar
-router.get("/update/:id",albumsController.update)
-router.post("/update/:id",albumsController.updateProcess)
+router.get("/admin/update/:id",isAdminRoutesMiddleware,albumsController.update)
+router.post("/admin/update/:id",isAdminRoutesMiddleware,albumsController.updateProcess)
 
 //borrar
-router.post("/delete/:id",albumsController.delete)
+router.post("/admin/delete/:id",isAdminRoutesMiddleware,albumsController.delete)
 //borrar foto
-router.get("/delete/deletePhoto/:id",albumsController.deletePhoto)
-router.post("/delete/photo/:id",albumsController.deletePhotoProcess)
+router.get("/admin/delete/deletePhoto/:id",isAdminRoutesMiddleware,albumsController.deletePhoto)
+router.post("/admin/delete/photo/:id",isAdminRoutesMiddleware,albumsController.deletePhotoProcess)
 
 router.get('/list',albumsController.list)
 router.get('/search',albumsController.search)

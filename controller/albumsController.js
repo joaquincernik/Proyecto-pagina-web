@@ -8,7 +8,7 @@ const albumsController={
         
     },
     createProcess:(req,res)=>{
-        console.log(req.body);
+        
         db.Albums.create({
             name:req.body.name,
             cover:req.body.cover,
@@ -28,6 +28,7 @@ const albumsController={
     },
 
     list:(req,res)=>{
+     
        db.Albums.findAll({
             order:[
                 ['date','DESC']
@@ -54,7 +55,7 @@ const albumsController={
             })
     },
     updateProcess:(req,res)=>{
-        console.log(req.body)
+        
         if(req.body.cover!==""){
             db.Albums.update({
             
@@ -111,10 +112,9 @@ const albumsController={
     },
     addPhotoProcess:(req,res)=>{
         let images=[]
-        console.log(req.body)
-        images=req.body.images
-        console.log(req.body.images.length)
         
+        images=req.body.images
+       
         if(Array.isArray(req.body.images)){
             for(i=0;i<images.length;i++){
                 db.Photos.create({
@@ -143,13 +143,27 @@ const albumsController={
             }).catch(err=>{console.log(err)})
     },
     deletePhotoProcess:(req,res)=>{
-        console.log(req.body)
+        
         db.Photos.destroy({
             where:{
                 photo_id:req.body.button
             }
-        }).then(res.redirect("/"))
+        }).then(res.redirect("/")) 
+    },
+    listAdmin:(req,res)=>{
         
-    }
+           db.Albums.findAll({
+                order:[
+                    ['date','DESC']
+                ],
+                
+            })
+            .then(function(albums){
+                
+                return res.render("albums/adminView",{albums})
+            }).catch(err=>{console.log(err)})
+            },
+    
+    
 }
 module.exports=albumsController;

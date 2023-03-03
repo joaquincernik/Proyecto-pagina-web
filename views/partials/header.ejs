@@ -43,10 +43,27 @@
             </form>
             </div>
 
+
+            <% if(locals.isLogged){ %>
+                <div class="register">
+                    <i class="fas fa-user"></i>
+                    <h1><a href="/user/logout">cerrar sesion</a></h1>
+                </div>
+              
+
+             <% }else { %>
+          
             <div class="register">
                 <i class="fas fa-user"></i>
+                
                 <h1><a href="/user/register">registrarse</a></h1>
             </div>
+            <div class="register">
+                <i class="fas fa-user"></i>
+                
+                <h1><a href="/user/login">iniciar sesion</a></h1>
+            </div>
+            <% } %>
         </nav>
     </header>
    

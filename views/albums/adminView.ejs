@@ -1,15 +1,11 @@
 <%- include('../partials/header')  %>
 
 
-<% if(locals.isAdmin){ %>
-<button class="adminView"><a href="/albums/admin/adminView">VER VISTA DE ADMINISTRADOR</a></button>
-  <% } %>
-<h1 class="title_body">TODOS LOS ALBUMES </h1>
-
+<button><a href="/albums/admin/create">CREAR</a></button>
 <div class="album_box_father">
 <% albums.map(album=> {%>
   <div class="album_box">
-    <h1><a href="/albums/<%= album.album_id %>"><%= album.name %></a></h1>
+    <h1><a href="/albums/admin/update/<%= album.album_id %>"><%= album.name %></a></h1>
     <img src="/images/<%=album.cover%>">
     <p>Creado el <%= album.date %></p>
     </div>  
