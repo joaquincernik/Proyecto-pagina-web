@@ -1,0 +1,37 @@
+/*de admin*/
+#update-title{
+    margin: 15px;
+    text-align: center;
+}
+.admin-button-box{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.admin-button {
+    background-color: #373e98;
+    color: #ebebeb;
+    width: 150px;
+    height: 60px;
+    margin: 10px;
+}
+.admin-button a{
+    color:#ebebeb;
+}
+
+.update-box{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+   
+}
+.update-box img{
+    width: 50%;
+    margin: 20px;
+}
+
+.create-box{
+    display: flex;
+    flex-wrap: wrap;
+}

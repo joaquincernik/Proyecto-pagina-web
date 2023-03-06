@@ -1,9 +1,9 @@
 <%- include('../partials/header')  %>
 
 
-
-
-<h1>EDITAR ALBUM</h1>
+<h1 id="update-title">EDITAR ALBUM</h1>
+<div class="update-box">
+    
 <img src="/images/<%= album.cover %>" alt="">
 <form action="/albums/admin/update/<%= album.album_id %>" method="POST">
 
@@ -20,12 +20,15 @@
     <input class="fyle" type="file" accept=".jpg, .png, .jpeg, .svg" name="cover" id="image" value="<%= album.cover %>">
 </div>
 
-    <button type="submit">EDITAR</button>
+    <button class="admin-button" type="submit">EDITAR</button>
 </form>
+</div>
 
+<div class="admin-button-box">
 <form method="POST" action="/albums/admin/delete/<%= album.album_id %>">
-    <button type="submit">BORRAR ALBUM</button>
+    <button class="admin-button" type="submit">BORRAR ALBUM</button>
 </form>
-<a href="/albums/admin/create/addPhoto/<%= album.album_id %>">AGREGAR FOTOS</a>
-<a href="/albums/admin/delete/deletePhoto/<%= album.album_id %>">ELIMINAR FOTOS</a>
+<button class="admin-button"><a href="/albums/admin/create/addPhoto/<%= album.album_id %>">AGREGAR FOTOS</a></button>
+<button class="admin-button"><a href="/albums/admin/delete/deletePhoto/<%= album.album_id %>">ELIMINAR FOTOS</a></button>
+</div>
 <%- include('../partials/footer')  %>
