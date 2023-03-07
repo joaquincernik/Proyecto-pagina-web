@@ -4,19 +4,36 @@
 <div class="create-box">
 <form action="/albums/admin/create" method="POST">
 
+    
     <div>
-    <label for="">NOMBRE</label>
+        <% if (locals.errors && errors.name) { %>
+            <span class="barra">
+                <%= errors.name.msg %>
+            </span>
+            <% } %>
+    <label for="name">NOMBRE</label>
     <input type="text" name="name" >
 </div>
+
 <div>
+    <% if (locals.errors && errors.date) { %>
+        <span class="barra">
+            <%= errors.date.msg %>
+        </span>
+        <% } %>
     <label for="">FECHA</label>
     <input type="date" name="date" >
 </div>
 <div>
+    <% if (locals.errors && errors.cover) { %>
+        <span class="barra">
+            <%= errors.cover.msg %>
+        </span>
+        <% } %>
     <label for="">FOTO DE PORTADA</label>
     <input class="fyle" type="file" accept=".jpg, .png, .jpeg, .svg" name="cover" id="image">
 </div>
-    <button class="admin-button" type="submit">CREAR</button>
+    <button  class="admin-button" type="submit">CREAR</button>
 </form>
 </div>
 <%- include('../partials/footer')  %>

@@ -1,5 +1,6 @@
 let db=require("../database/models")
 const Op = db.Sequelize.Op;
+const { validationResult }=require("express-validator")
 
 const albumsController={
 
@@ -8,13 +9,21 @@ const albumsController={
         
     },
     createProcess:(req,res)=>{
+        const validations=validationResult(req)
         
+        if(validations.errors.length>0){
+            
+            return res.render("albums/albumCreate",{
+                errors:validations.mapped(),
+                oldData:req.body
+            })
+        }
         db.Albums.create({
             name:req.body.name,
             cover:req.body.cover,
             date:req.body.date
-        });
-        res.redirect("/")
+        })
+        .then(user=>{res.redirect("/")})
     },
 
     details:function(req,res){
@@ -111,6 +120,11 @@ const albumsController={
             }).catch(err=>{console.log(err)})
     },
     addPhotoProcess:(req,res)=>{
+        const validations=validationResult(req)
+        
+        if(validations.errors.length>0){
+            
+            return res.redirect("/")}
         let images=[]
         
         images=req.body.images

@@ -75,8 +75,36 @@ form input{
     width: 220px;
     margin-left: 5px;
 }
+
+
+
+
 /*fin de header*/
 
+/*detail*/
+#ask-login-h2{
+    text-align: center;
+    margin: 30px;
+}
+
+.pedido-button-father{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px;
+}
+.pedido-button button{
+    background-color: #373e98;
+    color: #ebebeb;
+    width: 150px;
+    height: 60px;
+    margin: 10px;
+    
+}
+.pedido-button a{
+    color:#ebebeb;
+}
+/*list*/
 .title_body{
     text-align: center;
     margin: 30px;
@@ -117,34 +145,7 @@ form input{
 }
 
 
-/*LISTA DE FOTOS EN DELETEPHOTO*/
-.photos_list_father{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 20px;
-}
-.photos_list{
-    display: flex;
-    flex-wrap: wrap;
-    width: 25%;
-    justify-content: center;
-    border-top: 1px solid #ebebeb;
-    padding-left:15px;
-    padding-right:15px;
-    padding-top: 15px;
-    margin-top: 5px;
-    background-color:white;
-    padding-bottom: 10px;
-}
 
-.photos_list img{
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    margin: 15px;
-}
 /*footer*/
 footer {
 margin-top: 100px;

@@ -1,16 +1,18 @@
 const express = require('express')
 const router = express.Router()
 const albumsController=require("../controller/albumsController")
+const albumMiddleware=require("../middlewares/albumMiddleware")
+const addPhotoMiddleware=require("../middlewares/addPhotoMiddleware")
 const isAdminRoutesMiddleware=require("../middlewares/isAdminRoutesMiddleware")
 //crear albums
 router.get('/admin/create',isAdminRoutesMiddleware,albumsController.create)
-router.post('/admin/create',isAdminRoutesMiddleware,albumsController.createProcess)
+router.post('/admin/create',isAdminRoutesMiddleware,albumMiddleware,albumsController.createProcess)
 
 //admin
 router.get("/admin/adminView",isAdminRoutesMiddleware,albumsController.listAdmin)
 //anadir fotos
 router.get("/admin/create/addPhoto/:id",isAdminRoutesMiddleware,albumsController.addPhoto)
-router.post("/admin/create/addPhoto/:id",isAdminRoutesMiddleware,albumsController.addPhotoProcess)
+router.post("/admin/create/addPhoto/:id",isAdminRoutesMiddleware,addPhotoMiddleware,albumsController.addPhotoProcess)
 
 //editar
 router.get("/admin/update/:id",isAdminRoutesMiddleware,albumsController.update)

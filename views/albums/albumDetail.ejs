@@ -2,11 +2,25 @@
 
 <h1 id="album_name"><%= album.name %></h1>
 <div class="photos_box">
-
+<% let contador=1 %>
     <% album.photos.map(photo=> {%>
+        
         <img src="/images/<%= photo.link %>">
+        <% contador++ %>
     <%}); %>
 </div>
+
+
+<% if(!locals.isAdmin){ %>
+<h2 id="ask-login-h2">Registrate para pedir tus fotos!</h2>
+    <% }else{ %>
+        <div class="pedido-button-father">
+        <div class="pedido-button">
+            <button  class="pedido-button"><a class="pedido-button">Haz tu pedido</a></button>
+        </div>
+    </div>
+        <% } %>
+
 
 
 <%- include('../partials/footer')  %>

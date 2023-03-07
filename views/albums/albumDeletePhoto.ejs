@@ -4,13 +4,12 @@
 <div class="photos_list_father">
 
 <% photos.map(photo=>{ %>
-<form method="post" action="/albums/admin/delete/photo/<%= photo.photo_id %>">
+<form class="delete-photo-form" method="post" action="/albums/admin/delete/photo/<%= photo.photo_id %>">
 <div class="photos_list">
     <img src="/images/<%= photo.link %>">
-    <p><%= photo.link %></p>    
-    <button name="button" value="<%= photo.photo_id %>" type="submit" >BORRAR</button>     
+    <p><%= photo.link %></p>         
 </div>
-
+<button class="admin-button"name="button" value="<%= photo.photo_id %>" type="submit" >BORRAR</button>
 </form>
 <% }) %>
 

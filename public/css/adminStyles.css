@@ -35,3 +35,40 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+/*delete photo*/
+.delete-photo-form {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.photos_list_father{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+.photos_list{
+    display: flex;
+    flex-wrap: wrap;
+    width: 25%;
+    justify-content: center;
+    border-top: 1px solid #ebebeb;
+    padding-left:15px;
+    padding-right:15px;
+    padding-top: 15px;
+    margin-top: 5px;
+    background-color:white;
+    padding-bottom: 10px;
+}
+
+.photos_list img{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 15px;
+}
