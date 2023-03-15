@@ -2,7 +2,7 @@
 
 <h1>CREAR ALBUM</h1>
 <div class="create-box">
-<form action="/albums/admin/create" method="POST">
+<form action="/albums/admin/create" enctype="multipart/form-data" method="POST">
 
     
     <div>
@@ -31,9 +31,13 @@
         </span>
         <% } %>
     <label for="">FOTO DE PORTADA</label>
-    <input class="fyle" type="file" accept=".jpg, .png, .jpeg, .svg" name="cover" id="image">
+    <input class="fyle" type="file" accept=".jpg,.jpeg, .png, .jpeg, .svg" name="image" id="image">
+    
+
 </div>
     <button  class="admin-button" type="submit">CREAR</button>
+
+
 </form>
 </div>
 <%- include('../partials/footer')  %>

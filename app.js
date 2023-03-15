@@ -1,6 +1,7 @@
 const path=require('path');
 const express =require('express');
 const app = express();
+const multer = require('multer')
 
 const methodOverride= require("method-override")
 app.use(methodOverride("_method"))
@@ -8,6 +9,20 @@ app.use(express.static('public'))
 app.use(express.urlencoded({ extended: false }));
 app.set("view engine","ejs")
 
+
+//multer
+var storage = multer.diskStorage({
+    destination: (req, file, callBack) => {
+        callBack(null, './public/images/')     // './public/images/' directory name where save the file
+    },
+    filename: (req, file, callBack) => {
+        callBack(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+    }
+})
+
+var upload = multer({
+    storage: storage
+});
 //cookie y session
 const session = require('express-session')
 const cookies = require('cookie-parser')
@@ -30,11 +45,13 @@ const port=3000;
 const mainRouter=require('./routes/mainRouter')
 const albumsRouter=require('./routes/albumsRouter')
 const userRouter=require('./routes/userRouter');
+//const orderRouter=require('./routes/orderRouter');
 
 
 app.use("/",mainRouter)
 app.use("/albums",albumsRouter)
 app.use("/user",userRouter)
+//app.use("/order",orderRouter)
 
 //errors
 app.use((req,res,next)=>{

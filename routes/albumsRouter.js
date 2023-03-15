@@ -4,9 +4,26 @@ const albumsController=require("../controller/albumsController")
 const albumMiddleware=require("../middlewares/albumMiddleware")
 const addPhotoMiddleware=require("../middlewares/addPhotoMiddleware")
 const isAdminRoutesMiddleware=require("../middlewares/isAdminRoutesMiddleware")
+const multer = require('multer')
+const path=require("path")
+//multer
+var storage = multer.diskStorage({
+    destination: (req, file, callBack) => {
+        callBack(null, './public/images/')     // './public/images/' directory name where save the file
+    },
+    filename: (req, file, callBack) => {
+        console.log(file);
+        callBack(null, file.originalname  )
+    }
+})
+
+var upload = multer({
+    storage: storage
+});
+
 //crear albums
 router.get('/admin/create',isAdminRoutesMiddleware,albumsController.create)
-router.post('/admin/create',isAdminRoutesMiddleware,albumMiddleware,albumsController.createProcess)
+router.post('/admin/create',isAdminRoutesMiddleware,upload.single('image'),albumMiddleware,albumsController.createProcess)
 
 //admin
 router.get("/admin/adminView",isAdminRoutesMiddleware,albumsController.listAdmin)

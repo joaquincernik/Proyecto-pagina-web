@@ -12,18 +12,18 @@ const albumsController={
         const validations=validationResult(req)
         
         if(validations.errors.length>0){
-            
+            console.log(validations.errors);
             return res.render("albums/albumCreate",{
                 errors:validations.mapped(),
                 oldData:req.body
             })
         }
-        db.Albums.create({
+        /*db.Albums.create({
             name:req.body.name,
             cover:req.body.cover,
             date:req.body.date
         })
-        .then(user=>{res.redirect("/")})
+        .then(user=>{res.redirect("/")})*/
     },
 
     details:function(req,res){
