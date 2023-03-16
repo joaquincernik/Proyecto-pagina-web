@@ -25,7 +25,7 @@
 </div>
 
 <div class="admin-button-box">
-<form method="POST" action="/albums/admin/delete/<%= album.album_id %>">
+<form method="POST" enctype="multipart/form-data" action="/albums/admin/delete/<%= album.album_id %>">
     <button class="admin-button" type="submit">BORRAR ALBUM</button>
 </form>
 <button class="admin-button"><a href="/albums/admin/create/addPhoto/<%= album.album_id %>">AGREGAR FOTOS</a></button>

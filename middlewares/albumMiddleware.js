@@ -5,7 +5,7 @@ const albumMiddleware=[
 
     body("date").notEmpty().withMessage("Completa el campo correo electronico")
     .isDate().withMessage("Completa el campo fecha").bail(),
-   body("cover").notEmpty().withMessage("Elige una foto de portada").bail(),
+   //body("cover").notEmpty().withMessage("Elige una foto de portada").bail(),
 
 ]
 module.exports=albumMiddleware

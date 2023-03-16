@@ -4,36 +4,22 @@ const albumsController=require("../controller/albumsController")
 const albumMiddleware=require("../middlewares/albumMiddleware")
 const addPhotoMiddleware=require("../middlewares/addPhotoMiddleware")
 const isAdminRoutesMiddleware=require("../middlewares/isAdminRoutesMiddleware")
-const multer = require('multer')
-const path=require("path")
-//multer
-var storage = multer.diskStorage({
-    destination: (req, file, callBack) => {
-        callBack(null, './public/images/')     // './public/images/' directory name where save the file
-    },
-    filename: (req, file, callBack) => {
-        console.log(file);
-        callBack(null, file.originalname  )
-    }
-})
+const upload=require("../middlewares/coverMulterMiddleware")
 
-var upload = multer({
-    storage: storage
-});
 
 //crear albums
 router.get('/admin/create',isAdminRoutesMiddleware,albumsController.create)
-router.post('/admin/create',isAdminRoutesMiddleware,upload.single('image'),albumMiddleware,albumsController.createProcess)
+router.post('/admin/create',isAdminRoutesMiddleware,upload.single('cover'),albumMiddleware,albumsController.createProcess)
 
 //admin
 router.get("/admin/adminView",isAdminRoutesMiddleware,albumsController.listAdmin)
 //anadir fotos
 router.get("/admin/create/addPhoto/:id",isAdminRoutesMiddleware,albumsController.addPhoto)
-router.post("/admin/create/addPhoto/:id",isAdminRoutesMiddleware,addPhotoMiddleware,albumsController.addPhotoProcess)
+router.post("/admin/create/addPhoto/:id",isAdminRoutesMiddleware,upload.array('images'),addPhotoMiddleware,albumsController.addPhotoProcess)
 
 //editar
 router.get("/admin/update/:id",isAdminRoutesMiddleware,albumsController.update)
-router.post("/admin/update/:id",isAdminRoutesMiddleware,albumsController.updateProcess)
+router.post("/admin/update/:id",isAdminRoutesMiddleware,upload.single('cover'),albumsController.updateProcess)
 
 //borrar
 router.post("/admin/delete/:id",isAdminRoutesMiddleware,albumsController.delete)

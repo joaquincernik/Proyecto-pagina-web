@@ -10,7 +10,7 @@ const albumsController={
     },
     createProcess:(req,res)=>{
         const validations=validationResult(req)
-        
+        console.log(req.file);
         if(validations.errors.length>0){
             console.log(validations.errors);
             return res.render("albums/albumCreate",{
@@ -18,12 +18,12 @@ const albumsController={
                 oldData:req.body
             })
         }
-        /*db.Albums.create({
+        db.Albums.create({
             name:req.body.name,
-            cover:req.body.cover,
+            cover:req.file.filename,
             date:req.body.date
         })
-        .then(user=>{res.redirect("/")})*/
+        .then(user=>{res.redirect("/")})
     },
 
     details:function(req,res){
@@ -69,7 +69,7 @@ const albumsController={
             db.Albums.update({
             
                 name:req.body.name,
-                cover:req.body.cover,
+                cover:req.fyle.filename,
                 date:req.body.date
             },{
                 where:{
@@ -121,11 +121,23 @@ const albumsController={
     },
     addPhotoProcess:(req,res)=>{
         const validations=validationResult(req)
+        for(i=0;i<req.files.length;i++){
+            console.log(req.files[i]);
+            db.Photos.create({
+                link:req.files[i].originalname,
+                album_id:req.params.id
+            }) 
+        }
+      
         
         if(validations.errors.length>0){
             
             return res.redirect("/")}
-        let images=[]
+           
+
+           
+           
+       /* let images=[]
         
         images=req.body.images
        
@@ -142,7 +154,7 @@ const albumsController={
                     link:images,
                     album_id:req.params.id
                 }) 
-        }
+        }*/
        
         res.redirect("/albums/"+req.params.id) 
     },
