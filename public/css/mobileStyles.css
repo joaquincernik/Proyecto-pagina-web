@@ -1,0 +1,23 @@
+@media (max-width: 768px){
+    footer{
+    display: none;   
+ }   
+ 
+header img, header input ,.search-form{
+    display: none;
+}
+.allPhotos,.home,.register{
+    align-content:center ;
+    justify-content: center;
+    margin: 7px;
+}
+nav h1{
+    margin: 5px;
+    font-family: 'Montserrat Medium', sans-serif;
+    font-weight: 100;
+    font-size: 15px;
+    text-decoration: none;
+    text-align: center;
+}
+
+   }

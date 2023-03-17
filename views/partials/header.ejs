@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <script src="https://kit.fontawesome.com/bc6659b6c4.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
@@ -9,39 +10,43 @@
     <link rel="stylesheet" href="/css/detailStyles.css">
     <link rel="stylesheet" href="/css/userStyles.css">
     <link rel="stylesheet" href="/css/adminStyles.css">
+    <link rel="stylesheet" href="/css/mobileStyles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;800&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="/images/logo-final.png" />
     <title>RGB cartas graficas</title>
 </head>
+
 <body>
-   
+
     <header>
         <nav>
-          
-           <img src="/images/logo-final.png" alt="">
-            <div>
-            
-            <div class="home">
-                
-                <i class="fas fa-home"></i>
-                <h1><a href="/">inicio</h1></a>
-            </div>
-            
-            <!--<h1><a href="/guia">guia telefonica</a></h1>  <<-->
 
-            <div class="allPhotos">
-                <i class="fas fa-camera"></i>
-                <h1><a href="/albums/list">todas las fotos</a></h1>
-            
-            </div>
-            <form action="/albums/search"> 
-                <button><a class="fas fa-search" id="search"></a></button>
-                <input type="text" name="search" placeholder="Buscar albums por su nombre">
-                
-            </form>
+            <img src="/images/logo-final.png" alt="">
+            <div>
+
+                <div class="home">
+
+                    <i class="fas fa-home"></i>
+                    <h1><a href="/">inicio</h1></a>
+                </div>
+
+                <!--<h1><a href="/guia">guia telefonica</a></h1>  <<-->
+
+                <div class="allPhotos">
+                    <i class="fas fa-camera"></i>
+                    <h1><a href="/albums/list">todas las fotos</a></h1>
+
+                </div>
+                <form action="/albums/search" class="search-form">
+                    <button><a class="fas fa-search" id="search"></a></button>
+                    <input type="text" name="search" placeholder="Buscar albums por su nombre">
+
+                </form>
             </div>
 
 
@@ -50,21 +55,20 @@
                     <i class="fas fa-user"></i>
                     <h1><a href="/user/logout">cerrar sesion</a></h1>
                 </div>
-              
 
-             <% }else { %>
-          
-            <div class="register">
-                <i class="fas fa-user"></i>
-                
-                <h1><a href="/user/register">registrarse</a></h1>
-            </div>
-            <div class="register">
-                <i class="fas fa-user"></i>
-                
-                <h1><a href="/user/login">iniciar sesion</a></h1>
-            </div>
-            <% } %>
+
+                <% }else { %>
+
+                    <div class="register">
+                        <i class="fas fa-user"></i>
+
+                        <h1><a href="/user/register">registrarse</a></h1>
+                    </div>
+                    <div class="register">
+                        <i class="fas fa-user"></i>
+
+                        <h1><a href="/user/login">iniciar sesion</a></h1>
+                    </div>
+                    <% } %>
         </nav>
     </header>
-   
