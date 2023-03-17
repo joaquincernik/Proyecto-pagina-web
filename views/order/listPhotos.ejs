@@ -1,0 +1,25 @@
+<%- include('../partials/header')  %>
+
+<h1 id="album_name"><%= album.name %></h1>
+<div class="list-photos-order-father">
+
+<% let contador=1 %>
+    <% album.photos.map(photo=> {%>
+        <div class="list-photos-order">
+        <img src="/images/<%= photo.link %>">
+        <p><%= photo.link %></p>
+        <% contador++ %>
+    </div>
+    <%}); %>
+
+</div>
+
+<div class="order-text">
+<h2 >Ingrese los nombres de las fotos a pedir</h2>
+<form action="/orders/create/<%= album.album_id %>" method="POST">
+    <label for="photos"></label>
+    <input type="text" placeholder="Ejemplo:'foto1,foto2,foto3'" name="photos">
+    <button  type="submit">Pedir</button>
+</form>
+</div>
+<%- include('../partials/footer')  %>

@@ -45,13 +45,13 @@ const port=3000;
 const mainRouter=require('./routes/mainRouter')
 const albumsRouter=require('./routes/albumsRouter')
 const userRouter=require('./routes/userRouter');
-//const orderRouter=require('./routes/orderRouter');
+const orderRouter=require('./routes/ordersRouter');
 
 
 app.use("/",mainRouter)
 app.use("/albums",albumsRouter)
 app.use("/user",userRouter)
-//app.use("/order",orderRouter)
+app.use("/orders",orderRouter)
 
 //errors
 app.use((req,res,next)=>{

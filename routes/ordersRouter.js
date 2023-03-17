@@ -1,8 +1,12 @@
-/*const express=require('express')
+const express=require('express')
 const router=express.Router();
-//const mainController=require('../controller/mainController');
+const orderController=require('../controller/orderController');
+const orderMiddleware=require("../middlewares/orderMiddleware")
 
-//router.get('/',mainController.index)
+router.get('/create/:id',orderMiddleware,orderController.create)
+router.post('/create/:id',orderController.createProcess)
 
+router.get('/list',orderController.listOrders)
 
-module.exports=router*/
+router.post('/delete/:id',orderController.delete)
+module.exports=router

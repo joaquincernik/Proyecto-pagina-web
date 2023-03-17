@@ -1,0 +1,35 @@
+<%- include('../partials/header')  %>
+
+<h1 class="title_body">TODOS LOS PEDIDOS </h1>
+
+<div class="album_box_father">
+  <table class="orders-table">
+  <tr>
+    <th>Nombre</th>
+    <th>Email</th>
+    <th>Direccion</th>
+    <th>Fotos pedidas</th>
+  </tr>
+
+  
+    <% orders.map(order=> {%>
+  <tr>
+      <td><%= order.name %></td>
+      <td><%= order.email %></td>   
+      <td><%= order.address %></td>
+     <td><%= order.photos %></td>
+
+     <form action="/orders/delete/<%= order.id %>" method="POST">
+      <td><input type="submit" value="Borrar" id="button-order-delete" name="delete-button"></td>
+     </form>
+    
+  </tr>
+  
+    <%}); %>
+  
+ 
+  </table>
+
+
+</div>
+<%- include('../partials/footer')  %>
