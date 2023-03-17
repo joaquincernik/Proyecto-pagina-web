@@ -10,8 +10,23 @@
     <p>Creado el <%= album.date %></p>
     </div>  
 <%}); %>
-
 </div>
+<% if(orders.length>0){ %>
+  <div style="display: flex;flex-wrap: wrap;justify-content: center;flex-direction: column;align-content: center;">
+  <h1 class="title_body">HISTORIAL DE PEDIDOS</h1>
+  <table class="orders-table-user">
+      <th>Fotos pedidas</th>
+    
+      <% orders.map(order=> {%>
+      <tr>
+       <td><%= order.photos %></td>
+      </tr>
+  <% }) %>
+  </table>
+</div>
+  <% } %>
+
+
 <%- include('./partials/footer')  %>
 
 
