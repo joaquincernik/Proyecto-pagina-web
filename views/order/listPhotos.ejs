@@ -19,7 +19,12 @@
 <form action="/orders/create/<%= album.album_id %>" method="POST">
     <label for="photos"></label>
     <input type="text" placeholder="Ejemplo:'foto1,foto2,foto3'" name="photos">
-    <button  type="submit">Pedir</button>
+    <button  type="submit" onclick="orderButton()">Pedir</button>
 </form>
+<script>
+    function orderButton(){
+    alert("Orden realizada exitosamente!")
+}
+</script>
 </div>
 <%- include('../partials/footer')  %>

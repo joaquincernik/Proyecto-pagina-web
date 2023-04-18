@@ -1,5 +1,13 @@
 <%- include('./partials/header') %>
-
+<script>
+  const Swal = require('sweetalert2')
+  Swal.fire({
+title: 'Error!',
+text: 'Do you want to continue',
+icon: 'error',
+confirmButtonText: 'Cool'
+})
+</script>
   <h1 class="title_body">ULTIMOS ALBUMES AGREGADOS</h1>
 
   <div class="album_box_father">

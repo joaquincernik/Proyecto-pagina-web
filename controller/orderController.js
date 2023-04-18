@@ -19,7 +19,7 @@ const orderController={
             email:res.locals.userLogged.email,
             photos:req.body.photos,
         }) .then(function(){
-            
+           
             res.redirect("/")
         }).catch(err=>{console.log(err)})
     },

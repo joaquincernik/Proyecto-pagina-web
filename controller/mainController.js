@@ -1,6 +1,10 @@
+const swal = require('sweetalert2');
 let db=require("../database/models")
+
 const mainController={
     index:(req,res)=>{
+        
+          
        //si no esta logeado
         if(!res.locals.isLogged){
             db.Albums.findAll({
