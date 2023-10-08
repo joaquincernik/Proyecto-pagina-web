@@ -3,7 +3,7 @@
     font-size: 40px;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 800;
+    font-weight: 300;
     margin: 10px;
     color: #2a2a2a;
 }
@@ -25,6 +25,7 @@ scroll-snap-align: center;
 
 /*order photos*/
 .list-photos-order-father{
+  
   display: flex;
   flex-wrap: wrap;
   align-items: center;

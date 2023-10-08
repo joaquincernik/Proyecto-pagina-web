@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
-
+    text-decoration: none;
 }
 body{
     background-color: #f2f2f2;
@@ -82,6 +82,15 @@ form input{
 /*fin de header*/
 
 /*detail*/
+.box-icon{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.box-icon p{
+   margin-bottom: 0px;
+}
 #ask-login-h2{
     text-align: center;
     margin: 30px;
@@ -114,13 +123,14 @@ form input{
 .album_box_father{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
     margin-top: 20px;
+    padding: 50px;
 }
 .album_box{
     display: flex;
     flex-wrap: wrap;
-    width: 25%;
+    width: 33%;
     justify-content: center;
     border-top: 1px solid #ebebeb;
     padding-left:15px;
@@ -134,7 +144,7 @@ form input{
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    margin: 15px;
+    
 }
 .album_box h1{
     font-size: 20px;
@@ -230,3 +240,6 @@ flex-direction: row;
 align-items: center;
 }
 
+a, button{
+    text-decoration: none !important ;
+}

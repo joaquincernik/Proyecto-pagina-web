@@ -17,6 +17,9 @@ module.exports = (sequelize, dataTypes) =>{
         cover:{
             type:dataTypes.STRING,
             allowNull: false
+        },
+        link:{
+            type:dataTypes.STRING,
         }
         
     }

@@ -1,6 +1,6 @@
 <%- include('../partials/header')  %>
 
-<h1>CREAR ALBUM</h1>
+<h1>Crear album</h1>
 <div class="create-box">
 <form action="/albums/admin/create" enctype="multipart/form-data" method="POST">
 
@@ -33,7 +33,8 @@
     <label for="">FOTO DE PORTADA</label>
     <input class="fyle" type="file" accept=".jpg,.jpeg, .png, .jpeg, .svg" name="cover" id="image">
     
-
+    <label for="">Link</label>
+    <input type="text" name="link" >
 </div>
     <button  class="admin-button" type="submit">CREAR</button>
 

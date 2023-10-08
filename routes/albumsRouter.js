@@ -4,6 +4,7 @@ const albumsController=require("../controller/albumsController")
 const albumMiddleware=require("../middlewares/albumMiddleware")
 const addPhotoMiddleware=require("../middlewares/addPhotoMiddleware")
 const isAdminRoutesMiddleware=require("../middlewares/isAdminRoutesMiddleware")
+const nullIdMiddleware=require("../middlewares/nullIdMiddleware")
 const upload=require("../middlewares/coverMulterMiddleware")
 
 
@@ -30,5 +31,5 @@ router.post("/admin/delete/photo/:id",isAdminRoutesMiddleware,albumsController.d
 router.get('/list',albumsController.list)
 router.get('/search',albumsController.search)
 router.get("/:id",albumsController.details)
-
+router.get("/:id/carrousel/:begginingPhoto",albumsController.carrousel)
 module.exports=router

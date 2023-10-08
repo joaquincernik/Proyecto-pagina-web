@@ -1,27 +1,50 @@
 <%- include('./partials/header') %>
-<script>
-  const Swal = require('sweetalert2')
-  Swal.fire({
-title: 'Error!',
-text: 'Do you want to continue',
-icon: 'error',
-confirmButtonText: 'Cool'
-})
-</script>
-  <h1 class="title_body">ULTIMOS ALBUMES AGREGADOS</h1>
 
-  <div class="album_box_father">
+<section class="jumbotron text-center">
+  <div class="conteiner">
+    <h1 style="font-family: 'Montserrat', sans-serif;
+    font-weight: 300; font-size: 30px;">Seguinos en nuestras redes sociales</h1>
+    <div class="box-icon">
+      <i class="fa fa-brands fa-twitter" style="color: #2b35ca;"></i>
+      <h1><a class="lead text-muted p-2" href="https://twitter.com/rgbartesgraf">@rgbartesgraf</a></h1>
+    </div>
+
+    <div class="box-icon">
+        <a href="https://www.facebook.com/rossogustavo.com.ar/?fref=ts"><i class="fa fa-brands fa-facebook" style="color: #2b35ca;"></i></a>
+        <a class="lead text-muted p-2" href="https://www.facebook.com/rossogustavo.com.ar/?fref=ts"><p>@rossogustavo</p></a>
+    </div>
+
+    <div class="box-icon">
+      <i class="fa fa-phone" style="color: #2b35ca;"></i>
+      <p class="lead text-muted p-2">3537589284</p>
+    </div>
+
+    <div class="box-icon">
+      <a href="https://api.whatsapp.com/send?phone=543537589284"><i class="fa fa-brands fa-whatsapp" style="color: #2b35ca;"></i></a>
+      <a class="lead text-muted p-2" href="https://api.whatsapp.com/send?phone=543537589284"><p>Enviame un whatsapp</p></a>
+  </div>
+
+  </div>
+</section>
+
+</script>
+  <h1 class="title_body">Ultimos albumes agregados</h1>
+
+  <div class="album_box_father py-5">
     <% albums.map(album=> {%>
       <div class="album_box">
-        <h1><a href="/albums/<%= album.album_id %>">
+        <h1><a href="/orders/create/<%= album.album_id %>">
             <%= album.name %>
           </a></h1>
-        <img src="/images/<%=album.cover%>">
+          <a href="/orders/create/<%= album.album_id %>">
+            <img src="/images/<%=album.cover%>">
+          </a>
         <p>Creado el <%= album.date %>
         </p>
       </div>
       <%}); %>
   </div>
+
   <% if(orders.length>0){ %>
     <div style="display: flex;flex-wrap: wrap;justify-content: center;flex-direction: column;align-content: center;">
       <h1 class="title_body">HISTORIAL DE PEDIDOS</h1>

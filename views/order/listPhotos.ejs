@@ -1,26 +1,44 @@
 <%- include('../partials/header')  %>
 
 <h1 id="album_name"><%= album.name %></h1>
+<%if(album.link!=null){ %>
+    <div style="display: flex; justify-content: center;">
+    <iframe width="1200" height="720" src="https://www.youtube.com/embed/<%= id %>?si=CG-5i8mGhxWMk3dW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div> 
+<% }else{ %>
+
 <div class="list-photos-order-father">
+<%if(album.photos.length==0){ %>
+    <p style='text-align:center;'>No hay imágenes en este álbum</p>
+<% } %>
 
 <% let contador=1 %>
     <% album.photos.map(photo=> {%>
         <div class="list-photos-order">
+        <a style="text-decoration: none;" href="/albums/<%= album.album_id %>/carrousel/<%= photo.photo_id %>">
         <img src="/images/<%= photo.link %>">
         <p><%= photo.link %></p>
+        </a>
         <% contador++ %>
     </div>
     <%}); %>
-
 </div>
 
-<div class="order-text">
-<h2 >Ingrese los nombres de las fotos a pedir</h2>
-<form action="/orders/create/<%= album.album_id %>" method="POST">
-    <label for="photos"></label>
-    <input type="text" placeholder="Ejemplo:'foto1,foto2,foto3'" name="photos">
-    <button  type="submit" onclick="orderButton()">Pedir</button>
-</form>
+<div class="d-grid gap-2 d-md-flex justify-content-center" style="margin-top: 10px;">
+    <a class="btn btn-primary " style="background-color:#373e98; border: none;" href="/albums/<%= album.album_id %>"">Ver en vista grande</a>
+</div>
+<% if(!locals.isLogged){ %>
+    <h2 id="ask-login-h2">Registrate para pedir tus fotos!</h2>
+        <% }else{ %>    
+            <div class="order-text">
+            <h2 >Ingrese los nombres de las fotos a pedir</h2>
+            <form action="/orders/create/<%= album.album_id %>" method="POST">
+             <label for="photos"></label>
+             <input type="text" placeholder="Ejemplo:'foto1,foto2,foto3'" name="photos">
+             <button  type="submit" onclick="orderButton()">Pedir</button>
+            </form>
+        <% } %>
+<% } %>
 <script>
     function orderButton(){
     alert("Orden realizada exitosamente!")

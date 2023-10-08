@@ -1,7 +1,7 @@
 <%- include('../partials/header')  %>
 
 <div class="register_box_father">
-<h1>CREAR USUARIO</h1>
+<h1>Crear usuario</h1>
 
 <form class="register_box" action="/user/register" method="POST">
     
@@ -10,34 +10,34 @@
             <%= errors.name.msg %>
         </span>
         <% } %>
-    <label for="name">NOMBRE DE USUARIO:</label>
-    <input type="text" name="name" value="<%= locals.oldData ? oldData.name : null %>">
+    <label for="name">Nombre de usuario:</label>
+    <input style="width: 15%;" class="form-control" id="floatingInput" type="text" name="name" value="<%= locals.oldData ? oldData.name : null %>">
 
     <% if (locals.errors && errors.email) { %>
         <span class="barra">
             <%= errors.email.msg %>
         </span>
         <% } %>
-    <label for="email">EMAIL:</label>
-    <input type="email" name="email" value="<%= locals.oldData ? oldData.email : null %>">
+    <label for="email">Email:</label>
+    <input style="width: 15%;" class="form-control" id="floatingInput" type="email" name="email" value="<%= locals.oldData ? oldData.email : null %>">
 
     <% if (locals.errors && errors.address) { %>
         <span class="barra">
             <%= errors.address.msg %>
         </span>
         <% } %>
-    <label for="address" >DIRECCION:</label>
-    <input type="text" name="address" value="<%= locals.oldData ? oldData.address : null %>">
+    <label for="address" >Direccion:</label>
+    <input style="width: 15%;" class="form-control" id="floatingInput" type="text" name="address" value="<%= locals.oldData ? oldData.address : null %>">
 
     <% if (locals.errors && errors.password) { %>
         <span class="barra">
             <%= errors.password.msg %>
         </span>
         <% } %>
-    <label for="password">CONTRASENA:</label>
-    <input type="password" name="password" >
+    <label for="password">Password:</label>
+    <input style="width: 15%;" class="form-control" id="floatingInput" type="password" name="password" >
 
-    <button type="submit">CREAR</button>
+    <button type="submit">Crear</button>
 
 </form>
 </div>

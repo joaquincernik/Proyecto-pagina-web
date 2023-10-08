@@ -1,4 +1,23 @@
 @media (max-width: 768px){
+    .album_box_father{
+        padding: 0px;
+        margin-bottom: 55px;
+    }
+    .album_box{
+        width: 50%;
+        padding-bottom: 10px;
+    }
+   
+    .list-photos-order{
+        width: 50%;
+    }
+    .order-text h2{
+        font-size: 25px;
+    }
+    .order-text{
+        margin-bottom: 55px;
+    }
+    
     footer{
     display: none;   
  }   

@@ -7,8 +7,14 @@ const orderController={
             include:[{association:'photos'}]
         })
         .then(function(album){
+            let id='';
+            if(album.link!=null){
+                let index=album.link.indexOf('=')+1;
+                 id= album.link.slice(index);
+            }
+           
             
-            res.render("order/listPhotos",{album:album})
+            res.render("order/listPhotos",{album:album,id:id})
         }).catch(err=>{console.log(err)})
        
     },

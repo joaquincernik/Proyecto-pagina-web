@@ -21,7 +21,8 @@ const albumsController={
         db.Albums.create({
             name:req.body.name,
             cover:req.file.filename,
-            date:req.body.date
+            date:req.body.date,
+            link:req.body.link
         })
         .then(user=>{res.redirect("/")})
     },
@@ -35,7 +36,16 @@ const albumsController={
             res.render("albums/albumDetail",{album:album})
         }).catch(err=>{console.log(err)})
     },
-
+    carrousel:function(req,res){
+        let begginingPhoto=req.params.begginingPhoto;
+        db.Albums.findByPk(req.params.id,{
+            include:[{association:'photos'}]
+        })
+        .then(function(album){
+            console.log(begginingPhoto);
+            res.render("albums/albumDetailCarrousel",{album:album,begginingPhoto:begginingPhoto})
+        }).catch(err=>{console.log(err)})
+    },
     list:(req,res)=>{
      
        db.Albums.findAll({
@@ -64,13 +74,15 @@ const albumsController={
             })
     },
     updateProcess:(req,res)=>{
-        
+        console.log(req);
         if(req.body.cover!==""){
             db.Albums.update({
             
                 name:req.body.name,
-                cover:req.fyle.filename,
-                date:req.body.date
+                cover:req.file.filename,
+                date:req.body.date,
+                link:req.body.link
+
             },{
                 where:{
                     album_id:req.params.id
@@ -80,7 +92,9 @@ const albumsController={
             db.Albums.update({
             
                 name:req.body.name,
-                date:req.body.date
+                date:req.body.date,
+                link:req.body.link
+
             },{
                 where:{
                     album_id:req.params.id
@@ -132,29 +146,7 @@ const albumsController={
         
         if(validations.errors.length>0){
             
-            return res.redirect("/")}
-           
-
-           
-           
-       /* let images=[]
-        
-        images=req.body.images
-       
-        if(Array.isArray(req.body.images)){
-            for(i=0;i<images.length;i++){
-                db.Photos.create({
-                    link:images[i],
-                    album_id:req.params.id
-                })
-            }
-        }
-        else{
-                db.Photos.create({
-                    link:images,
-                    album_id:req.params.id
-                }) 
-        }*/
+            return res.redirect("/");}
        
         res.redirect("/albums/"+req.params.id) 
     },
