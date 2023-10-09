@@ -28,9 +28,10 @@
 </section>
 
 </script>
-  <h1 class="title_body">Ultimos albumes agregados</h1>
+  <h1 class="title_body" style="font-family: 'Montserrat', sans-serif;
+  font-weight: 400; font-size: 40px;">Últimos albumes agregados</h1>
 
-  <div class="album_box_father py-5">
+  <div class="album_box_father">
     <% albums.map(album=> {%>
       <div class="album_box">
         <h1><a href="/orders/create/<%= album.album_id %>">
