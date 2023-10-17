@@ -11,13 +11,15 @@
     <% album.photos.map(photo=> {%>
         <% if(i==1){%>
             <div class="carousel-item active">
-                <img class="d-block w-100" src="/images/<%= photo.link %>" alt="First slide">
-              </div>
+                <img class="d-block w-100" src="/images/<%= photo.link %>">
+                <p class="text-center p-2"><%= photo.link %></p>
+            </div>
             <% } else{%>
 
         
             <div class="carousel-item">
-                <img class="d-block w-100" src="/images/<%= photo.link %>" alt="Second slide">
+                <img class="d-block w-100" src="/images/<%= photo.link %>">
+                <p class="text-center p-2"><%= photo.link %></p>
               </div>
             <% }%>
       

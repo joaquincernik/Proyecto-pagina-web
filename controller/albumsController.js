@@ -18,11 +18,13 @@ const albumsController={
                 oldData:req.body
             })
         }
+        let l;
+        req.body.link.length<5?l=null:l=req.body.link;
         db.Albums.create({
             name:req.body.name,
             cover:req.file.filename,
             date:req.body.date,
-            link:req.body.link
+            link:l
         })
         .then(user=>{res.redirect("/")})
     },
@@ -74,14 +76,23 @@ const albumsController={
             })
     },
     updateProcess:(req,res)=>{
-        console.log(req);
-        if(req.body.cover!==""){
-            db.Albums.update({
+        console.log(req.file);
+        let l;
+        if(req.body.link==undefined){
+                l=null;
+        }
+        else{
+            req.body.link.length<5?l=null:l=req.body.link;
+
             
+        }
+        
+        if(req.file!=undefined){
+            db.Albums.update({
                 name:req.body.name,
                 cover:req.file.filename,
                 date:req.body.date,
-                link:req.body.link
+                link:l
 
             },{
                 where:{
@@ -93,7 +104,7 @@ const albumsController={
             
                 name:req.body.name,
                 date:req.body.date,
-                link:req.body.link
+                link:l
 
             },{
                 where:{

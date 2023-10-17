@@ -11,7 +11,7 @@ const mainController={
                 order:[
                     ['date','DESC']
                 ],
-                limit:8
+                limit:9
             })
             .then(function(albums){
                 let orders=[];

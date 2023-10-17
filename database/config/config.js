@@ -3,21 +3,22 @@ module.exports={
     "username": "root",
     "password": "0101",
     "database": "Proyecto-pagina-web",
-    "host": "127.0.0.1",
+    "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": null,
+    "password": "0101",
     "database": "database_test",
-    "host": "127.0.0.1",
+    "host": "webserver.rossogustavo.com.ar",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
+    "password": "0101",
+    "database": "Proyecto-pagina-web",
+    "host": "webserver.rossogustavo.com.ar",
     "dialect": "mysql"
   }
 }
+

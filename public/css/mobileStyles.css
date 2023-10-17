@@ -1,4 +1,27 @@
 @media (max-width: 768px){
+    input{
+        width: 75% !important;
+    }
+    nav{
+        height: 100px;
+    }
+   .title_body{
+    font-size: 30px !important;
+   }
+   .jumbotron p{
+    font-size: 20px;
+   }
+   #album_name{
+    font-size: 30px !important;
+   }
+   
+   h2{
+    font-size: 25px;
+   }
+   iframe{
+    width: 350px;
+    height: 200px;
+   }
     .album_box_father{
         padding: 0px;
         margin-bottom: 55px;
@@ -38,5 +61,6 @@ nav h1{
     text-decoration: none;
     text-align: center;
 }
+
 
    }

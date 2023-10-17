@@ -5,7 +5,7 @@
 <div class="update-box">
     
 <img src="/images/<%= album.cover %>" alt="">
-<form action="/albums/admin/update/<%= album.album_id %>" method="POST">
+<form action="/albums/admin/update/<%= album.album_id %>"  enctype="multipart/form-data" method="POST">
 
     <div>
     <label for="">NOMBRE</label>
@@ -20,6 +20,12 @@
     <input class="fyle" type="file" accept=".jpg, .png, .jpeg, .svg" name="cover" id="image" value="<%= album.cover %>">
 </div>
 
+<% if(album.link!=null){ %>
+<div>
+    <label for="">link</label>
+    <input type="text" name="link" value="<%= album.link %>">
+</div>
+<% } %>
     <button class="admin-button" type="submit">EDITAR</button>
 </form>
 </div>
