@@ -1,35 +1,14 @@
 <%- include('../partials/header')  %>
+
+
 <% if(locals.isAdmin){ %>
+  <div style="display:flex; flex-direction: column; align-items: center;margin: 20px;">
+    <h4 style="font-family: 'Montserrat', sans-serif;
+    font-weight: 200;">Para editar y crear albumes pulse el siguiente boton</h4>
   <button class="admin-button"><a href="/albums/admin/adminView">Ver vista de administrador</a></button>
-    <% } %>
+</div>
+  <% } %>
 
-<!-- <section class="jumbotron text-center">
-  <div class="conteiner">
-    <h1 style="font-family: 'Montserrat', sans-serif;
-    font-weight: 300; font-size: 30px;">Seguinos en nuestras redes sociales</h1>
-    <div class="box-icon">
-      <i class="fa fa-brands fa-twitter" style="color: #2b35ca;"></i>
-      <h1><a class="lead text-muted p-2" href="https://twitter.com/rgbartesgraf">@rgbartesgraf</a></h1>
-    </div>
-
-    <div class="box-icon">
-        <a href="https://www.facebook.com/rossogustavo.com.ar/?fref=ts"><i class="fa fa-brands fa-facebook" style="color: #2b35ca;"></i></a>
-        <a class="lead text-muted p-2" href="https://www.facebook.com/rossogustavo.com.ar/?fref=ts"><p>@rossogustavo</p></a>
-    </div>
-
-    <div class="box-icon">
-      <i class="fa fa-phone" style="color: #2b35ca;"></i>
-      <p class="lead text-muted p-2">3537589284</p>
-    </div>
-
-    <div class="box-icon">
-      <a href="https://api.whatsapp.com/send?phone=543537589284"><i class="fa fa-brands fa-whatsapp" style="color: #2b35ca;"></i></a>
-      <a class="lead text-muted p-2" href="https://api.whatsapp.com/send?phone=543537589284"><p>Enviame un whatsapp</p></a>
-  </div>
-
-  </div>
-</section>
- -->
 <h1 class="title_body" style="font-family: 'Montserrat', sans-serif;
 font-weight: 400; font-size: 40px;">Todos los albumes </h1>
 

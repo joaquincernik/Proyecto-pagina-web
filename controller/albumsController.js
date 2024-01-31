@@ -19,7 +19,13 @@ const albumsController={
             })
         }
         let l;
+        if(req.body.link==undefined){
+            l=null;
+    }
+    else{
         req.body.link.length<5?l=null:l=req.body.link;
+    }
+    
         db.Albums.create({
             name:req.body.name,
             cover:req.file.filename,
@@ -83,8 +89,6 @@ const albumsController={
         }
         else{
             req.body.link.length<5?l=null:l=req.body.link;
-
-            
         }
         
         if(req.file!=undefined){

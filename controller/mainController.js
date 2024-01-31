@@ -11,7 +11,7 @@ const mainController={
                 order:[
                     ['date','DESC']
                 ],
-                limit:9
+                limit:12
             })
             .then(function(albums){
                 let orders=[];
@@ -24,7 +24,7 @@ const mainController={
             order:[
                 ['date','DESC']
             ],
-            limit:8
+            limit:12
         })
         let orderRequest=db.Orders.findAll({
            where:{

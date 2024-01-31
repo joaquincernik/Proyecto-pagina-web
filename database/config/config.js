@@ -1,13 +1,13 @@
 module.exports={
   "development": {
-    "username": "root",
+    "username": "user",
     "password": "0101",
     "database": "Proyecto-pagina-web",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
-    "username": "root",
+    "username": "user",
     "password": "0101",
     "database": "database_test",
     "host": "webserver.rossogustavo.com.ar",

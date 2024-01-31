@@ -4,12 +4,16 @@
     }
     nav{
         height: 100px;
+        justify-content: center;
     }
    .title_body{
     font-size: 30px !important;
    }
    .jumbotron p{
     font-size: 20px;
+   }
+   .jumbotron h1{
+    font-size: 30px !important;
    }
    #album_name{
     font-size: 30px !important;
@@ -41,9 +45,7 @@
         margin-bottom: 55px;
     }
     
-    footer{
-    display: none;   
- }   
+    
  
 header img, header input ,.search-form{
     display: none;
@@ -62,5 +64,7 @@ nav h1{
     text-align: center;
 }
 
-
+footer div{
+    padding-top: 30px !important;
+}
    }

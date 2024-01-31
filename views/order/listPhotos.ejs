@@ -1,48 +1,81 @@
-<%- include('../partials/header')  %>
+<%- include('../partials/header') %>
 
-<h1 id="album_name"><%= album.name %></h1>
-<%if(album.link!=null){ %>
-    <div style="display: flex; justify-content: center;">
-    <iframe width="1200" height="720" src="https://www.youtube.com/embed/<%= id %>?si=CG-5i8mGhxWMk3dW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-  
-<% }else{ %>
+    <h1 id="album_name">
+        <%= album.name %>
+    </h1>
+    <%if(album.link!=null){ %>
+        <div style="display: flex; justify-content: center;">
+            <iframe width="1200" height="720" src="https://www.youtube.com/embed/<%= id %>?si=CG-5i8mGhxWMk3dW"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
 
-<div class="list-photos-order-father">
-<%if(album.photos.length==0){ %>
-    <p style='text-align:center;'>No hay imágenes en este álbum</p>
-<% } %>
+            <% }else{ %>
 
-<% let contador=1 %>
-    <% album.photos.map(photo=> {%>
-        <div class="list-photos-order">
-        <a style="text-decoration: none;" href="/albums/<%= album.album_id %>/carrousel/<%= photo.photo_id %>">
-        <img src="/images/<%= photo.link %>">
-        <p><%= photo.link %></p>
-        </a>
-        <% contador++ %>
-    </div>
-    <%}); %>
-</div>
+                <div class="list-photos-order-father">
+                    <%if(album.photos.length==0){ %>
+                        <p style='text-align:center;'>No hay imágenes en este álbum</p>
+                        <% } %>
 
-<div class="d-grid gap-2 d-md-flex justify-content-center" style="margin-top: 10px;">
-    <a class="btn btn-primary " style="background-color:#373e98; border: none;" href="/albums/<%= album.album_id %>"">Ver en vista grande</a>
+                            <% let contador=1 %>
+                                <% album.photos.map(photo=> {%>
+                                    <div class="list-photos-order">
+                                        <img src="/images/<%= photo.link %>">
+                                        <p>
+                                            <%= photo.link %>
+                                        </p>
+                                        <% contador++ %>
+                                            <a style="text-decoration: none;"
+                                                href="/albums/<%= album.album_id %>/carrousel/<%= photo.photo_id %>">
+                                            </a>
+                                            <div class="carritoButton">
+                                                <i class="fas fa-regular fa-heart"></i>
+                                                <button value="<%= photo.link%>" onclick="buttonFunction(this)">Agregar
+                                                    al carrito</button>
+                                            </div>
+                                    </div>
+                                    <%}); %>
+                </div>
+                <div class="d-grid gap-2 d-md-flex justify-content-center text-center" style="margin-top: 10px;">
+                    <a class="btn btn-primary " style="background-color:#373e98; border: none;"
+                        href="/albums/<%= album.album_id %>"">Ver en vista grande</a>
 </div>
 <% if(!locals.isLogged){ %>
-    <h2 id="ask-login-h2">Registrate para pedir tus fotos!</h2>
-        <% }else{ %>    
-            <div class="order-text">
-            <h2 >Ingrese los nombres de las fotos a pedir</h2>
-            <form action="/orders/create/<%= album.album_id %>" method="POST">
-             <label for="photos"></label>
-             <input type="text" placeholder="Ejemplo:'foto1,foto2,foto3'" name="photos">
-             <button  type="submit" onclick="orderButton()">Pedir</button>
-            </form>
-        <% } %>
-<% } %>
-<script>
-    function orderButton(){
-    alert("Orden realizada exitosamente!")
-}
-</script>
-</div>
-<%- include('../partials/footer')  %>
+    <h2 id=" ask-login-h2">Registrate para pedir tus fotos!</h2>
+                        <% }else{ %>
+                            <div class="order-text">
+                                <h2>Ingrese los nombres de las fotos a pedir</h2>
+                                <form action="/orders/create/<%= album.album_id %>" method="POST">
+                                    <label for="photos"></label>
+                                    <input type="text" placeholder="Ejemplo:'foto1,foto2,foto3'" name="photos">
+                                    <button type="submit" onclick="orderButton()">Pedir</button>
+                                </form>
+                                <% } %>
+                                    <% } %>
+                                        <div class="order-text">
+                                            <h2>Ingrese los nombres de las fotos a pedir</h2>
+                                            <form action="/orders/create/<%= album.album_id %>" method="POST">
+                                                <label for="photos"></label>
+                                                <textarea id="pedidoInput" type="text"
+                                                    placeholder="Ejemplo:'foto1,foto2,foto3'" name="photos"></textarea>
+                                                <button type="submit">Pedir</button>
+                                            </form>
+                                        </div>
+
+
+
+                                        <script>
+                                            let input = document.getElementById("pedidoInput");
+                                            let arrayFotos = [];
+                                            function buttonFunction(x) {
+                                                let valorInput = document.getElementById("pedidoInput").value;
+                                                let photo = x.value + ", ";
+                                                arrayFotos.push(photo);
+                                                for (i = 0; i < arrayFotos.length; i++) {
+                                                    input.value = input.value + arrayFotos[i];
+                                                }
+                                            }
+                                        </script>
+
+
+                                        <%- include('../partials/footer') %>

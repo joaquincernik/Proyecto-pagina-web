@@ -4,27 +4,28 @@
 <h1 class="title_body" style="font-family: 'Montserrat', sans-serif;
 font-weight: 400; font-size: 40px;">Iniciar Sesion</h1>
 
-
 <form class="register_box" action="/user/login" method="POST">
     
     <% if (locals.errors && errors.email) { %>
-        <span class="barra">
+        
+        <span class="barra text-danger p-2">
             <%= errors.email.msg %>
         </span>
         <% } %>
     
     <label for="floatingInput">Email:</label>
     <input style="width: 15%;" class="form-control" id="floatingInput" type="email" name="email" value="<%= locals.oldData ? oldData.email : null %>">
-    
+  
     <% if (locals.errors && errors.password) { %>
-        <span class="barra">
+        
+        <span class="barra text-danger p-2">
             <%= errors.password.msg %>
         </span>
         <% } %>
     <label for="password">Password:</label>
     <input style="width: 15%;" class="form-control" id="floatingInput" type="password" name="password" >
-
-    <button type="submit">Crear</button>
+ 
+    <button type="submit">Iniciar</button>
 
 </form>
 </div>
