@@ -1,8 +1,8 @@
 <%- include('../partials/header')  %>
 
 <div style="display: flex; justify-content: center; padding: 20px;">
-<button class="admin-button text-center"><a href="/albums/admin/create">Crear</a></button>
-<button class="admin-button text-center"><a href="/orders/list">Ver tabla de pedidos</a></button>
+  <a href="/albums/admin/create"><button class="admin-button text-center">Crear</button></a>
+  <a href="/orders/list"><button class="admin-button text-center">Ver tabla de pedidos</button></a>
 </div>
 <div class="album_box_father">
 <% albums.map(album=> {%>

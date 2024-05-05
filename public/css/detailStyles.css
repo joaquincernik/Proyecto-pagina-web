@@ -70,7 +70,10 @@ transition: all 0.5s;
   flex-direction: column;
   align-content: center;
   align-items: center;
-  
+}
+
+.order-text form{
+  flex-direction: column;
 }
 .order-text h2{
   color: #2a2a2a;
@@ -83,6 +86,7 @@ transition: all 0.5s;
   width: 70px;
   border-radius: 10%;
   transition: all 0.5s;
+  margin: 5px;
 }
 .order-text textarea{
   width: 1000px;

@@ -1,4 +1,5 @@
 @media (max-width: 768px){
+  
     input{
         width: 75% !important;
     }
@@ -64,7 +65,13 @@ nav h1{
     text-align: center;
 }
 
+/*pedido de fotos*/
+.order-text textarea{
+    width: 100%;
+}
+
 footer div{
     padding-top: 30px !important;
 }
    }
+
