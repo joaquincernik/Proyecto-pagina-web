@@ -6,7 +6,7 @@ function isAdminMiddleware (req, res, next){
     
     if(req.session.userLogged){
        // console.log(req.session.userLogged);
-        if(req.session.userLogged.id == 2){
+        if(req.session.userLogged.id == 3){
             
             res.locals.isAdmin=true;
             //return res.redirect('/')

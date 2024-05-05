@@ -22,6 +22,10 @@ module.exports = (sequelize, dataTypes) =>{
             type: dataTypes.STRING(200),
             allowNull: false
         },
+        album_id: {
+            type:dataTypes.INTEGER,
+            allowNull:false,
+        }
     }
     let config = {
         tableName: 'Order',
@@ -29,6 +33,11 @@ module.exports = (sequelize, dataTypes) =>{
     }
     const Order = sequelize.define(alias, columns, config)
 
-    
+    Order.associate= function(models){
+        Order.belongsTo(models.Albums, {
+            as:"albums",
+            foreignKey: "album_id",
+        })
+    }
     return Order
 }
