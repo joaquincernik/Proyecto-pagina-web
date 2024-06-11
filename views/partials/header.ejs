@@ -6,71 +6,67 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/bc6659b6c4.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/detailStyles.css">
     <link rel="stylesheet" href="/css/userStyles.css">
     <link rel="stylesheet" href="/css/adminStyles.css">
     <link rel="stylesheet" href="/css/mobileStyles.css">
     <link rel="stylesheet" href="/css/bigScreenStyles.css">
-
+    -->
     <link href="http://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;800&display=swap"
         rel="stylesheet">
     <link rel="icon" href="/images/logo-final.png" />
     <title>RGB cartas graficas</title>
 </head>
 
-<body>
+<body class="bg-light">
 
-    <header>
+    <header style="height: 130px;" class="mb-3 bg-white d-flex align-content-center justify-content-center">
         <!-- class="navbar navbar-default navbar-fixed-top" -->
-        <nav>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white">
 
-            <img src="/images/logo-final.png" alt="">
-            <div>
+            <a href="/">
+                <img class="m-4" src="/images/logo-mejorado-calidad.png" width="125px" alt="">
+            </a>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 
-                <div class="home">
+                <div class="navbar-nav">
 
-                    <i class="fas fa-home"></i>
-                    <h1><a href="/">inicio</h1></a>
-                </div>
-
-                <!--<h1><a href="/guia">guia telefonica</a></h1>  <<-->
-
-                <div class="allPhotos">
-                    <i class="fas fa-camera"></i>
-                    <h1><a class="text-decoration-none" href="/albums/list">todas las fotos</a></h1>
-                </div>
-                <form action="/albums/search" class="search-form">
-                    <button><a class="fas fa-search" id="search"></a></button>
-                    <input type="text" name="search" placeholder="Buscar albums por su nombre">
-
-                </form>
-            </div>
+                    <a class="nav-item nav-link active pr-4 pl-5" href="/">inicio</a>
+                    <a class="nav-item nav-link pr-4" href="/albums/list">todas las fotos</a>
+                    <% if(locals.isLogged){ %>
+                        <div class="register">
+                            <a class="nav-item nav-link pr-4" href="/user/logout">cerrar sesion</a>
+                        </div>
 
 
-            <% if(locals.isLogged){ %>
-                <div class="register">
-                    <i class="fas fa-user"></i>
-                    <h1><a href="/user/logout">cerrar sesion</a></h1>
+                        <% }else { %>
+
+                            <div class="register">
+                                <a class="nav-item nav-link pr-4" href="/user/register">registrarse</a>
+                            </div>
+                            <div class="register">
+                                <a class="nav-item nav-link pr-4" href="/user/login">iniciar sesion</a>
+                            </div>
+                            <% } %>
                 </div>
 
 
-                <% }else { %>
+                                <form action="/albums/search" class="form-inline pl-4">
+                                    <button class="btn btn-light my-2 my-sm-0"><a class="fas fa-search" id="search"></a></button>
+                                    <input class="form-control mr-sm-2" type="text" name="search" placeholder="Buscar albums por su nombre">
 
-                    <div class="register">
-                        <i class="fas fa-user"></i>
+                                </form>
 
-                        <h1><a href="/user/register">registrarse</a></h1>
-                    </div>
-                    <div class="register">
-                        <i class="fas fa-user"></i>
-                        <h1><a href="/user/login">iniciar sesion</a></h1>
-                    </div>
-                    <% } %>
+
+
+                </div>
         </nav>
     </header>
