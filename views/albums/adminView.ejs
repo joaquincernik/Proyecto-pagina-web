@@ -1,9 +1,9 @@
 <%- include('../partials/header')  %>
 
-
-<button class="admin-button"><a href="/albums/admin/create">CREAR</a></button>
-<button class="admin-button"><a href="/orders/list">Ver tabla de pedidos</a></button>
-
+<div style="display: flex; justify-content: center; padding: 20px;">
+  <a href="/albums/admin/create"><button class="admin-button text-center">Crear</button></a>
+  <a href="/orders/list"><button class="admin-button text-center">Ver tabla de pedidos</button></a>
+</div>
 <div class="album_box_father">
 <% albums.map(album=> {%>
   <div class="album_box">

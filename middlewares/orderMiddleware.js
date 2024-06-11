@@ -1,6 +1,6 @@
 function orderMiddleware(req,res,next){
     
-    if(!res.locals.isLogged){
+   if(!res.locals.isLogged){
 res.redirect("/")
     }
 next()

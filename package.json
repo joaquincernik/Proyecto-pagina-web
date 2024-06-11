@@ -20,7 +20,6 @@
     "multer": "^1.4.5-lts.1",
     "mysql2": "^3.1.2",
     "sequelize": "5.21",
-    "sequelize-cli": "^6.6.1",
     "sweetalert": "^2.1.2",
     "sweetalert2": "^11.7.3"
   }

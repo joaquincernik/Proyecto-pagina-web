@@ -2,18 +2,26 @@
 
 
 <% if(locals.isAdmin){ %>
-<button class="admin-button"><a href="/albums/admin/adminView">VER VISTA DE ADMINISTRADOR</a></button>
+  <div style="display:flex; flex-direction: column; align-items: center;margin: 20px;">
+    <h4 style="font-family: 'Montserrat', sans-serif;
+    font-weight: 200;">Para editar y crear albumes pulse el siguiente boton</h4>
+  <a href="/albums/admin/adminView"><button class="admin-button">Ver vista de administrador</button></a>
+</div>
   <% } %>
-<h1 class="title_body">TODOS LOS ALBUMES </h1>
 
-<div class="album_box_father">
-<% albums.map(album=> {%>
+<h1 class="title_body" style="font-family: 'Montserrat', sans-serif;
+font-weight: 400; font-size: 40px;">Todos los albumes </h1>
+
+ <div class="album_box_father">
+<%albums.map(album=> {%>
   <div class="album_box">
-    <h1><a href="/albums/<%= album.album_id %>"><%= album.name %></a></h1>
+    <h1><a href="/orders/create/<%= album.album_id %>"><%= album.name %></a></h1>
+    <a href="/orders/create/<%= album.album_id %>">
     <img src="/images/<%=album.cover%>">
+    </a>
     <p>Creado el <%= album.date %></p>
     </div>  
-<%}); %>
+<%}); %> 
 
-</div>
+ </div>
 <%- include('../partials/footer')  %>

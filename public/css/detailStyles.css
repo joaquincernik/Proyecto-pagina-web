@@ -3,8 +3,8 @@
     font-size: 40px;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 800;
-    margin: 10px;
+    font-weight: 300;
+    margin: 20px;
     color: #2a2a2a;
 }
 .photos_box{
@@ -25,6 +25,7 @@ scroll-snap-align: center;
 
 /*order photos*/
 .list-photos-order-father{
+  
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -51,6 +52,16 @@ width: 100%;
 .list-photos-order p{
   margin: 15px;
 }
+
+.carritoButton i{
+  color: #fee36e;
+
+}
+.carritoButton button:hover{
+color: #fee36e;
+transition: all 0.5s;
+}
+
 .order-text{
   display: flex;
   flex-wrap: wrap;
@@ -59,7 +70,10 @@ width: 100%;
   flex-direction: column;
   align-content: center;
   align-items: center;
-  
+}
+
+.order-text form{
+  flex-direction: column;
 }
 .order-text h2{
   color: #2a2a2a;
@@ -72,4 +86,16 @@ width: 100%;
   width: 70px;
   border-radius: 10%;
   transition: all 0.5s;
+  margin: 5px;
+}
+.order-text textarea{
+  width: 1000px;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
 }

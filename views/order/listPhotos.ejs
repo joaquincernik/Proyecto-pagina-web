@@ -1,30 +1,113 @@
-<%- include('../partials/header')  %>
+<%- include('../partials/header') %>
 
-<h1 id="album_name"><%= album.name %></h1>
-<div class="list-photos-order-father">
+    <h1 id="album_name">
+        <%= album.name %>
+    </h1>
+    <%if(album.link!=null){ %>
+        <div style="display: flex; justify-content: center;">
+            <iframe width="1200" height="720" src="https://www.youtube.com/embed/<%= id %>?si=CG-5i8mGhxWMk3dW"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
 
-<% let contador=1 %>
-    <% album.photos.map(photo=> {%>
-        <div class="list-photos-order">
-        <img src="/images/<%= photo.link %>">
-        <p><%= photo.link %></p>
-        <% contador++ %>
-    </div>
-    <%}); %>
+            <% }else{ %>
 
+                <div class="list-photos-order-father">
+                    <%if(album.photos.length==0){ %>
+                        <p style='text-align:center;'>No hay imágenes en este álbum</p>
+                        <% } %>
+
+                            <% let contador=1 %>
+                                <% album.photos.map(photo=> {%>
+                                    <div class="list-photos-order">
+                                    <a style="text-decoration: none;"
+                                    href="/albums/<%= album.album_id %>/carrousel/<%= photo.photo_id %>">
+                                        <img src="/images/<%= photo.link %>">
+                                        <p>
+                                            <%= photo.link %>
+                                        </p>
+                                        <% contador++ %>
+                                            
+                                    </a>
+                                    <% if(locals.isLogged){ %>
+                                            <div class="carritoButton" id="<%= photo.link%>Agregar">
+                                                <i class="fas fa-regular fa-heart"></i>
+                                                <button value="<%= photo.link%>" onclick="buttonFunction(this)">Agregar
+                                                    al carrito</button>
+                                            </div>
+                                            <% }%>
+                                            <div class="quitarCarritoButton" id="<%= photo.link%>Quitar" style="display: none;">
+                                                <i class="fas fa-solid fa-ban" ></i>
+                                                <button value="<%= photo.link%>" onclick="quitarCarrito(this)">Quitar
+                                                    del carrito</button>
+                                            </div>
+                                    </div>
+                                    <%}); %>
+                </div>
+                <div class="d-grid gap-2 d-md-flex justify-content-center text-center" style="margin-top: 10px;">
+                    <a class="btn btn-primary " style="background-color:#373e98; border: none;"
+                        href="/albums/<%= album.album_id %>"">Ver en vista grande</a>
 </div>
+<% if(!locals.isLogged){ %>
+    <h2 id=" ask-login-h2" style="font-family: 'Montserrat', sans-serif;
+    font-weight: 300;text-align: center;margin: 20px;">Registrate para pedir tus fotos!</h2>
+                        <% }else{ %>
+                            <div class="order-text">
+                                <h2>Fotos a pedir</h2>
+                                <form action="/orders/create/<%= album.album_id %>" method="POST">
+                                    <label for="photos"></label>
+                                    <textarea id="pedidoInput" type="text"
+                                        placeholder="Ejemplo:'foto1,foto2,foto3'" name="photos" readonly></textarea>
+                                    <button type="submit">Pedir</button>
+                                </form>
+                            </div>
 
-<div class="order-text">
-<h2 >Ingrese los nombres de las fotos a pedir</h2>
-<form action="/orders/create/<%= album.album_id %>" method="POST">
-    <label for="photos"></label>
-    <input type="text" placeholder="Ejemplo:'foto1,foto2,foto3'" name="photos">
-    <button  type="submit" onclick="orderButton()">Pedir</button>
-</form>
-<script>
-    function orderButton(){
-    alert("Orden realizada exitosamente!")
-}
-</script>
-</div>
-<%- include('../partials/footer')  %>
+
+                                <% } %>
+                                    <% } %>
+
+
+                                        <script>
+                                            let input = document.getElementById("pedidoInput");
+                                            let arrayFotos = [];
+                                           
+                                            function buttonFunction(x) {
+                                                let botonAgregar=document.getElementById(x.value+"Agregar");
+                                                let botonQuitar=document.getElementById(x.value+"Quitar");
+                                                let photo = x.value;
+                                                arrayFotos.push(photo);
+                                                let cadena="";
+                                                for (i = 0; i < arrayFotos.length; i++) {
+                                                    cadena = cadena + arrayFotos[i]+", ";
+                                                }
+                                                input.value=cadena;
+
+                                                //display de botones
+                                                botonAgregar.style.display="none" 
+                                                botonQuitar.style.display="block"
+                                            }
+
+                                            function quitarCarrito(x){
+                                                let botonAgregar=document.getElementById(x.value+"Agregar");
+                                                let botonQuitar=document.getElementById(x.value+"Quitar");
+                                                let nuevaLista=[];
+                                                for(i=0;i<arrayFotos.length;i++){
+                                                    if(arrayFotos[i]!==x.value){
+                                                        nuevaLista.push(arrayFotos[i]);
+                                                    }
+                                                }
+                                                arrayFotos=nuevaLista;
+                                                let cadena="";
+                                                for (i = 0; i < arrayFotos.length; i++) {
+                                                    cadena = cadena + nuevaLista[i]+", ";
+                                                }
+                                                input.value=cadena;
+
+                                                //display de botones
+                                                botonAgregar.style.display="block"
+                                                botonQuitar.style.display="none"
+                                            }
+                                        </script>
+
+                            </div>
+                                        <%- include('../partials/footer') %>

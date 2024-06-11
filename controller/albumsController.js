@@ -18,10 +18,19 @@ const albumsController={
                 oldData:req.body
             })
         }
+        let l;
+        if(req.body.link==undefined){
+            l=null;
+    }
+    else{
+        req.body.link.length<5?l=null:l=req.body.link;
+    }
+    
         db.Albums.create({
             name:req.body.name,
             cover:req.file.filename,
-            date:req.body.date
+            date:req.body.date,
+            link:l
         })
         .then(user=>{res.redirect("/")})
     },
@@ -35,7 +44,16 @@ const albumsController={
             res.render("albums/albumDetail",{album:album})
         }).catch(err=>{console.log(err)})
     },
-
+    carrousel:function(req,res){
+        let begginingPhoto=req.params.begginingPhoto;
+        db.Albums.findByPk(req.params.id,{
+            include:[{association:'photos'}]
+        })
+        .then(function(album){
+            console.log(begginingPhoto);
+            res.render("albums/albumDetailCarrousel",{album:album,begginingPhoto:begginingPhoto})
+        }).catch(err=>{console.log(err)})
+    },
     list:(req,res)=>{
      
        db.Albums.findAll({
@@ -64,18 +82,40 @@ const albumsController={
             })
     },
     updateProcess:(req,res)=>{
+        console.log(req.file);
+        let l;
+        if(req.body.link==undefined){
+                l=null;
+        }
+        else{
+            req.body.link.length<5?l=null:l=req.body.link;
+        }
         
-                       
+        if(req.file!=undefined){
             db.Albums.update({
-            
                 name:req.body.name,
-                date:req.body.date
+                cover:req.file.filename,
+                date:req.body.date,
+                link:l
+
             },{
                 where:{
                     album_id:req.params.id
             }});   
+        }
+        else{
+            db.Albums.update({
+            
+                name:req.body.name,
+                date:req.body.date,
+                link:l
+
+            },{
+                where:{
+                    album_id:req.params.id
+            }});   
+        }
         
-                
         res.redirect("/")
     },
     delete:(req,res)=>{
@@ -113,7 +153,7 @@ const albumsController={
         for(i=0;i<req.files.length;i++){
             console.log(req.files[i]);
             db.Photos.create({
-                link:req.files[i].originalname,
+                link:req.files[i].filename,
                 album_id:req.params.id
             }) 
         }
@@ -121,29 +161,7 @@ const albumsController={
         
         if(validations.errors.length>0){
             
-            return res.redirect("/")}
-           
-
-           
-           
-       /* let images=[]
-        
-        images=req.body.images
-       
-        if(Array.isArray(req.body.images)){
-            for(i=0;i<images.length;i++){
-                db.Photos.create({
-                    link:images[i],
-                    album_id:req.params.id
-                })
-            }
-        }
-        else{
-                db.Photos.create({
-                    link:images,
-                    album_id:req.params.id
-                }) 
-        }*/
+            return res.redirect("/");}
        
         res.redirect("/albums/"+req.params.id) 
     },
