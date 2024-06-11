@@ -1,23 +1,25 @@
 module.exports={
   "development": {
-    "username": "root",
-    "password": "1234",
-    "database": "proyecto_db",
-    "host": "127.0.0.1",
+    "username": "jcernik",
+    "password": "jciua$2023",
+    "database": "Proyecto-pagina-web",
+    "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
-    "username": "root",
-    "password": null,
+    "username": "jcernik",
+    "password": "jciua$2023",
     "database": "database_test",
-    "host": "127.0.0.1",
+    "host": "webserver.rossogustavo.com.ar",
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
+    "username": "jcernik",
+    "password": "jciua$2023",
+    "database": "Proyecto-pagina-web",
+    "host": "webserver.rossogustavo.com.ar",
     "dialect": "mysql"
   }
 }
+
+

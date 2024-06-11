@@ -65,18 +65,7 @@ const albumsController={
     },
     updateProcess:(req,res)=>{
         
-        if(req.body.cover!==""){
-            db.Albums.update({
-            
-                name:req.body.name,
-                cover:req.fyle.filename,
-                date:req.body.date
-            },{
-                where:{
-                    album_id:req.params.id
-            }});   
-        }
-        else{
+                       
             db.Albums.update({
             
                 name:req.body.name,
@@ -85,8 +74,8 @@ const albumsController={
                 where:{
                     album_id:req.params.id
             }});   
-        }
         
+                
         res.redirect("/")
     },
     delete:(req,res)=>{
