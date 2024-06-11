@@ -24,6 +24,7 @@ const orderController={
             address:res.locals.userLogged.address,
             email:res.locals.userLogged.email,
             photos:req.body.photos,
+            album_id:req.params.id
         }) .then(function(){
            
             res.redirect("/")
@@ -32,9 +33,11 @@ const orderController={
 
     listOrders:(req,res)=>{
         
-        db.Orders.findAll()
+        db.Orders.findAll(
+           {include:[{association:'albums'}]}
+        )
         .then(function(orders){
-           
+           console.log(orders);
             return res.render("order/ordersList",{orders})
         }).catch(err=>{console.log(err)})
     },

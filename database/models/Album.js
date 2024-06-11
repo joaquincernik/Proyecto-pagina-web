@@ -30,10 +30,17 @@ module.exports = (sequelize, dataTypes) =>{
     const Album = sequelize.define(alias, columns, config)
 
     Album.associate= function(models){
+        Album.hasMany(models.Orders, {
+            as:"orders",
+            foreignKey: "album_id",
+        })
+    }
+    Album.associate= function(models){
         Album.hasMany(models.Photos, {
             as:"photos",
             foreignKey: "album_id",
         })
     }
+    
     return Album
 }

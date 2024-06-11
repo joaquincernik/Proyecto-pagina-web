@@ -153,7 +153,7 @@ const albumsController={
         for(i=0;i<req.files.length;i++){
             console.log(req.files[i]);
             db.Photos.create({
-                link:req.files[i].originalname,
+                link:req.files[i].filename,
                 album_id:req.params.id
             }) 
         }
