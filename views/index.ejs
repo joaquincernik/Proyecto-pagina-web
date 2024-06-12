@@ -1,31 +1,41 @@
 <%- include('./partials/header') %>
 
-<section class="jumbotron text-center">
-  <div class="conteiner">
+  <section class="jumbotron text-center bg-white my-3">
     <h1 style="font-family: 'Montserrat', sans-serif;
-    font-weight: 300; font-size: 40px;">Seguinos en nuestras redes sociales</h1>
-    <div class="box-icon">
-        <a href="https://www.facebook.com/rossogustavo.com.ar/?fref=ts"><i class="fa fa-brands fa-facebook" style="color: #2b35ca;"></i></a>
-        <a class="lead text-muted p-2" href="https://www.facebook.com/rossogustavo.com.ar/?fref=ts"><p>@rossogustavo</p></a>
+  font-weight: 200; font-size: 40px;">Seguinos en nuestras redes sociales</h1>
+    <div class="container d-flex flex-column align-items-center py-4">
+
+      <div class="d-flex justify-content-center">
+      <a href="https://www.facebook.com/rossogustavo.com.ar/?fref=ts"><i class="fa fa-brands fa-facebook pt-1 px-2"
+          style="color: #2b35ca; font-size: 20px;"></i></a>
+      <a style="text-decoration: none;"  href="https://www.facebook.com/rossogustavo.com.ar/?fref=ts">
+        <p class="text-dark">@rossogustavo</p>
+      </a>
     </div>
 
-    <div class="box-icon">
-      <i class="fa fa-phone" style="color: #2b35ca;"></i>
-      <p class="lead text-muted p-2">3537513657</p>
-    </div>
-    <div class="box-icon">
-      <a href="https://www.youtube.com/@gustavorosso7650"><i class="fa fa-brands fa-youtube" style="color: #2b35ca;"></i></a>
-      <a href="https://www.youtube.com/@gustavorosso7650"><p class="lead text-muted p-2">Suscribite a mi canal de youtube</p></a>
-    </div>
+      <div class="d-flex justify-content-center">
+        <i class="fa fa-phone pt-1 px-2" style="color: #2b35ca; font-size: 20px;"></i>
+        <p class="text-dark">3537513657</p>
+      </div>
+      <div class="d-flex justify-content-center">
+        <a href="https://www.youtube.com/@gustavorosso7650"><i class="fa fa-brands fa-youtube pt-1 px-2"
+            style="color: #2b35ca; font-size: 20px;"></i></a>
+        <a style="text-decoration: none;" href="https://www.youtube.com/@gustavorosso7650">
+          <p class="text-dark  link-opacity-100-hover">Suscribite a mi canal de youtube</p>
+        </a>
+      </div>
 
-    <div class="box-icon">
-      <a href="https://api.whatsapp.com/send?phone=543537513657"><i class="fa fa-brands fa-whatsapp" style="color: #2b35ca;"></i></a>
-      <a style="font-size: 25px;" class="lead text-muted p-2" href="https://api.whatsapp.com/send?phone=543537513657"><p>Enviame un whatsapp</p></a>
-  </div>
+      <div class="d-flex justify-content-center">
+        <a href="https://api.whatsapp.com/send?phone=543537513657"><i class="fa fa-brands fa-whatsapp pt-1 px-2"
+            style="color: #2b35ca; font-size: 20px;" ></i></a>
+        <a style="text-decoration: none;" href="https://api.whatsapp.com/send?phone=543537513657">
+          <p style="font-size: 20px;" class=" lead text-dark link-opacity-100-hover">Enviame un whatsapp</p>
+        </a>
+      </div>
 
-  </div>
-</section>
-</script>
+    </div>
+  </section>
+  </script>
   <h1 class="title_body" style="font-family: 'Montserrat', sans-serif;
   font-weight: 400; font-size: 40px;">Últimos albumes agregados</h1>
 
@@ -35,20 +45,21 @@
         <h1><a href="/orders/create/<%= album.album_id %>">
             <%= album.name %>
           </a></h1>
-          <a href="/orders/create/<%= album.album_id %>">
-            <img src="/images/<%=album.cover%>">
-          </a>
+        <a href="/orders/create/<%= album.album_id %>">
+          <img src="/images/<%=album.cover%>">
+        </a>
         <p>Creado el <%= album.date %>
         </p>
       </div>
       <%}); %>
-      <a  href="/albums/list" class="lead text-muted p-4 text-center">Ver todas las fotos</a>
+        <a href="/albums/list" class="lead text-muted p-4 text-center">Ver todas las fotos</a>
 
   </div>
 
 
   <% if(orders.length>0){ %>
-    <div style="display: flex;flex-wrap: wrap;justify-content: center;flex-direction: column;align-content: center;padding: 20px;">
+    <div
+      style="display: flex;flex-wrap: wrap;justify-content: center;flex-direction: column;align-content: center;padding: 20px;">
       <h1 class="title_body" style="font-family: 'Montserrat', sans-serif;
       font-weight: 400; font-size: 40px;">Historial de pedidos</h1>
       <table class="orders-table-user">
@@ -65,18 +76,20 @@
     </div>
     <% } %>
 
-  
-    <section class="jumbotron text-center" id="comoPidoMisFotos">
-      <div class="conteiner">
-        <h1 style="font-family: 'Montserrat', sans-serif;
+
+      <section class="jumbotron text-center" id="comoPidoMisFotos">
+        <div class="conteiner">
+          <h1 style="font-family: 'Montserrat', sans-serif;
         font-weight: 400; font-size: 40px;">¿Cómo pido mis fotos?</h1>
-        <div class="box-icon">
-          <p class="lead text-muted p-2">Lo unico que tenes que hacer es registrarte con los datos que luego seran utiles para que recibas tus fotos, y elegir las fotos que te gustan!</p>
-          <p class="lead text-muted p-2">Busca las fotos que te gustaria pedir y solo pulsando el boton añadir al carrito, nos pondremos en contacto con vos para que puedas recibirlas!</p>
+          <div class="box-icon">
+            <p class="lead text-muted p-2">Lo unico que tenes que hacer es registrarte con los datos que luego seran
+              utiles para que recibas tus fotos, y elegir las fotos que te gustan!</p>
+            <p class="lead text-muted p-2">Busca las fotos que te gustaria pedir y solo pulsando el boton añadir al
+              carrito, nos pondremos en contacto con vos para que puedas recibirlas!</p>
+          </div>
+
         </div>
-    
-      </div>
-    </section>
-    
+      </section>
+
 
       <%- include('./partials/footer') %>
