@@ -1,7 +1,7 @@
 const multer = require('multer')
 const path=require("path")
 //multer
-/*var storage = multer.diskStorage({
+var storage = multer.diskStorage({
     destination: (req, file, callBack) => {
         callBack(null, './public/images/')     // './public/images/' directory name where save the file
     },
@@ -10,9 +10,9 @@ const path=require("path")
         callBack(null, req.params.id+"-"+file.originalname  )
     }
 })
-*/
 
-//multer sftp
+
+/*multer sftp
 var sftpStorage = require('multer-sftp')
  
 var storage = sftpStorage({
