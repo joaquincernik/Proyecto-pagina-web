@@ -38,7 +38,7 @@
   </script>
   <h1 class="title_body" style="font-family: 'Montserrat', sans-serif;
   font-weight: 400; font-size: 40px;">Últimos albumes agregados</h1>
-
+<!--
   <div class="album_box_father">
     <% albums.map(album=> {%>
       <div class="album_box">
@@ -55,6 +55,28 @@
         <a href="/albums/list" class="lead text-muted p-4 text-center">Ver todas las fotos</a>
 
   </div>
+-->
+
+<div class="container">
+  <div class="row">
+    <% albums.map(album=> {%>
+    <div class="col">
+      <div class="album_box">
+        <h1><a href="/orders/create/<%= album.album_id %>">
+            <%= album.name %>
+          </a></h1>
+        <a href="/orders/create/<%= album.album_id %>">
+          <img style="width: 350px;" src="/images/<%=album.cover%>">
+        </a>
+        <p>Creado el <%= album.date %>
+        </p>
+      </div>
+    </div>
+  
+    <%}); %>
+
+  </div>
+</div>
 
 
   <% if(orders.length>0){ %>
