@@ -9,5 +9,7 @@ router.get('/create/:id',orderController.create)
 router.post('/create/:id',orderController.createProcess)
 
 router.get('/list',isAdminRoutesMiddleware,orderController.listOrders)
+router.get('/mis-ordenes',orderController.listMyOrders)
+
 router.post('/delete/:id',orderController.delete)
 module.exports=router

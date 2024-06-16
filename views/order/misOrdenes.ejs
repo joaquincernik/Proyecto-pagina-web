@@ -1,0 +1,59 @@
+<%- include('../partials/header') %>
+
+    <div
+        style="display: flex;flex-wrap: wrap;justify-content: center;flex-direction: column;align-content: center;padding: 20px;">
+        <h1 class="text-center p-5" style="font-family: 'Montserrat', sans-serif;
+font-weight: 400; font-size: 40px;">Historial de pedidos</h1>
+
+        <% if(!locals.isLogged){ %>
+            <a href="/user/login" style="text-decoration: none;">
+                <p class="text-center">Inicia sesion para ver tus pedidos</p>
+            </a>
+            
+            <% } else{ %>
+
+                <% if(orders.length>0){ %>
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="lead" scope="col"><b>Fotos pedidas</b></th>
+                                <th class="lead" scope="col"><b>Nombre de album</b></th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            <% orders.map(order=> {%>
+                                <tr>
+                                    <td>
+                                        <%= order.photos %>
+                                    </td>
+                                    <% if(order.album_id!=0){ %>
+                                        <td>
+                                            <%= order.albums.name %>
+                                        </td>
+                                        <%}else{ %>
+                                            <td>Indefinido</td>
+                                            <%} %>
+                                </tr>
+
+                                <%}); %>
+                        </tbody>
+
+                    </table>
+                    <div class="d-flex justify-content-center m-3">
+                        <a href="https://api.whatsapp.com/send?phone=543537513657"><i
+                                class="fa fa-brands fa-whatsapp pt-1 px-2"
+                                style="color: #2b35ca; font-size: 20px;"></i></a>
+                        <a style="text-decoration: none;" href="https://api.whatsapp.com/send?phone=543537513657">
+                            <p style="font-size: 20px;" class=" lead text-dark link-opacity-100-hover">Consultar acerca
+                                de mi pedido</p>
+                        </a>
+                    </div>
+                    <%} else{ %>
+                        <a href="/albums/list" style="text-decoration: none;">
+                            <p class="text-center">No has pedido fotos todavia, click aqui para ver los albumes disponibles</p>
+                        </a>
+                        <% } %>
+
+                        <% } %>
+    </div>
+    <%- include('../partials/footer') %>

@@ -47,7 +47,20 @@ const orderController={
                 id:req.params.id,
             }
         }).then(res.redirect("/orders/list"))
-    }
+    },
+    listMyOrders:(req,res)=>{
+       
+        if(!res.locals.isLogged){
+            return res.render("order/misOrdenes",{orders:''})
+        }else{
+        db.Orders.findAll( {include:[{association:'albums'}]},{
+           where:{
+            email:res.locals.userLogged.email
+           }})
+           .then(function(orders){
+            
+            return res.render("order/misOrdenes",{orders:orders})
+           })}  } 
 }
 
 module.exports=orderController

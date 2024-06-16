@@ -1,11 +1,11 @@
 <%- include('../partials/header')  %>
-
+<div class="bg-white p-3">
 <% let i=0; let end=1; %>
 
 <% let indexOfBegginng = album.photos.findIndex((element) => element.photo_id == begginingPhoto)%>
-<h1 id="album_name"><%= album.name %></h1>
-<div class="d-flex justify-content-center">
-<div class="col-md-7">
+<h1 class="text-center py-3"><%= album.name %></h1>
+<div class="d-flex justify-content-center py-3">
+<div class="col-md-9">
   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
     <% album.photos.map(photo=> {%>
@@ -32,11 +32,11 @@
     
    
    
-    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <a class="carousel-control-prev text-dark" href="#carouselExampleControls" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
     </a>
-    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <a class="carousel-control-next text-dark" href="#carouselExampleControls" role="button" data-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
@@ -45,14 +45,13 @@
 </div>
  
 </div>
+</div>
 <% if(!locals.isLogged){ %>
   <h2 id="ask-login-h2">Registrate para pedir tus fotos!</h2>
       <% }else{ %>
-          <div class="pedido-button-father">
-          <div class="pedido-button">
-              <button  class="pedido-button"><a class="pedido-button" href="/orders/create/<%= album.album_id %>">Haz tu pedido</a></button>
+          <div class="d-flex justify-content-center">
+              <button  style="background-color: #373e98; border: none;" class="btn btn-primary p-3 my-3 pedido-button"><a style="text-decoration: none;" class="pedido-button text-white" href="/orders/create/<%= album.album_id %>">Haz tu pedido</a></button>
           </div>
-      </div>
           <% } %>
   
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
