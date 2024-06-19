@@ -1,15 +1,26 @@
 <%- include('../partials/header')  %>
+<div class="mt-4 bg-white p-4">
 
-<h1 class="title_body">Resultados de la busqueda: "<%= toSearch  %>"</h1>
+<h1 class="text-center py-5" style="font-family: 'Montserrat', sans-serif;
+  font-weight: 400; font-size: 40px;">Resultados de la busqueda: "<%= toSearch  %>"</h1>
 
-<div class="album_box_father">
-<% albums.map(album=> {%>
-  <div class="album_box">
-    <h1><a href="/albums/<%= album.album_id %>"><%= album.name %></a></h1>
-    <img src="/images/<%=album.cover%>">
-    <p>Creado el <%= album.date %></p>
-    </div>  
+<div class="container-xxl mx-5 d-flex flex-wrap">
+  <% albums.map(album=> {%>
+    <div class="bg-white pt-4 px-4 d-flex flex-wrap flex-column justify-content-center align-items-center border border-light" style="width: 33%">
+      <a href="/orders/create/<%= album.album_id %>">
+        <img style="width: 100%;" src="/images/<%=album.cover%>">
+      </a>
+      <div class="d-flex flex-column flex-wrap h-10 p-3 align-items-center">
+        <h1 style="font-size: 25px;" class="text-center">
+          <a class="text-dark" style="text-decoration: none;" href="/orders/create/<%= album.album_id %>">
+            <%= album.name %>
+          </a></h1>
+        <p class="text-muted pt-2">Creado el <%= album.date %>
+        </p>
+      </div>
+    </div>
 <%}); %>
 
+</div>
 </div>
 <%- include('../partials/footer')  %>

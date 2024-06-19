@@ -1,23 +1,31 @@
 <%- include('../partials/header')  %>
 
-
-<h1 id="update-title">EDITAR ALBUM</h1>
-<div class="update-box">
+<div class="d-flex flex-column align-items-center bg-white">
+    <h1 class="text-center p-4">Editar album</h1>
     
-<img src="/images/<%= album.cover %>" alt="">
-<form action="/albums/admin/update/<%= album.album_id %>"  enctype="multipart/form-data" method="POST">
+    <form action="/albums/admin/update/<%= album.album_id %>" class="border-top border-secondary p-5""  enctype="multipart/form-data" method="POST">
+        <div class="d-flex justify-content-center pb-3">
+        <img src="/images/<%= album.cover %>" class="text-center" alt="">
+        </div>
+        
+            <div class="form-group">
+                <label for="">NOMBRE</label>
+                <input type="text" name="name" class="form-control" value="<%= album.name %>" >
+            </div>
+            <div class="form-group">
+                <label for="">FECHA</label>
+                <input type="date" name="date" class="form-control" value="<%= album.date %>">
+            </div>
+  
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <span class="input-group-text">Upload</span>
+      </div>
+      <div class="custom-file">
+        <input class="custom-file-input" type="file" accept=".jpg,.jpeg, .png, .jpeg, .svg"  name="cover" id="image" value="<%= album.cover %>">
+        <label class="custom-file-label" for="inputGroupFile01">Cambiar foto de portada</label>
+    </div>
 
-    <div>
-    <label for="">NOMBRE</label>
-    <input type="text" name="name" value="<%= album.name %>" >
-</div>
-<div>
-    <label for="">FECHA</label>
-    <input type="date" name="date" value="<%= album.date %>">
-</div>
-<div>
-    <label for="">FOTO DE PORTADA</label>
-    <input class="fyle" type="file" accept=".jpg, .png, .jpeg, .svg" name="cover" id="image" value="<%= album.cover %>">
 </div>
 
 <% if(album.link!=null){ %>
@@ -26,15 +34,17 @@
     <input type="text" name="link" value="<%= album.link %>">
 </div>
 <% } %>
-    <button class="admin-button" type="submit">EDITAR</button>
+    <button style="background-color: #373e98; border: none;" class="btn btn-primary my-3" type="submit">EDITAR</button>
 </form>
 </div>
 
-<div class="admin-button-box">
+<div class="d-flex justify-content-center p-3">
 <form method="POST" enctype="multipart/form-data" action="/albums/admin/delete/<%= album.album_id %>">
-    <button class="admin-button" type="submit">BORRAR ALBUM</button>
+    <button class="btn btn-primary m-3 bg-danger border border-light" type="submit">BORRAR ALBUM</button>
 </form>
-<button class="admin-button"><a href="/albums/admin/create/addPhoto/<%= album.album_id %>">AGREGAR FOTOS</a></button>
-<button class="admin-button"><a href="/albums/admin/delete/deletePhoto/<%= album.album_id %>">ELIMINAR FOTOS</a></button>
+<button class="btn btn-primary m-3 border border-light"><a class="text-white" href="/albums/admin/create/addPhoto/<%= album.album_id %>">AGREGAR FOTOS</a></button>
+<button class="btn btn-primary m-3 bg-warning border border-light"><a class="text-white" href="/albums/admin/delete/deletePhoto/<%= album.album_id %>">ELIMINAR FOTOS</a></button>
+</div>
+
 </div>
 <%- include('../partials/footer')  %>
