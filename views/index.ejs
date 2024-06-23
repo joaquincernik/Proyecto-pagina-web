@@ -1,5 +1,7 @@
 <%- include('./partials/header') %>
 
+<div class="container-sm bg-white p-5">
+
   <section class="jumbotron text-center bg-white mt-4">
     <h1 style="font-family: 'Montserrat', sans-serif;
   font-weight: 200; font-size: 40px;">Seguinos en nuestras redes sociales</h1>
@@ -35,29 +37,36 @@
 
     </div>
   </section>
- 
+
   <div class="mt-4 bg-white p-4">
-  <h1 class="text-center py-5" style="font-family: 'Montserrat', sans-serif;
+    <h1 class="text-center py-5" style="font-family: 'Montserrat', sans-serif;
   font-weight: 400; font-size: 40px;">Últimos albumes agregados</h1>
-  <div class="container-xxl mx-5 d-flex flex-wrap">
-    <% albums.map(album=> {%>
-      <div class="bg-white pt-4 px-4 d-flex flex-wrap flex-column justify-content-center align-items-center border border-light" style="width: 33%">
-        <a href="/orders/create/<%= album.album_id %>">
-          <img style="width: 100%;" src="/images/<%=album.cover%>">
-        </a>
-        <div class="d-flex flex-column flex-wrap h-10 p-3 align-items-center">
-          <h1 style="font-size: 25px;" class="text-center">
-            <a class="text-dark" style="text-decoration: none;" href="/orders/create/<%= album.album_id %>">
-              <%= album.name %>
-            </a></h1>
-          <p class="text-muted pt-2">Creado el <%= album.date %>
-          </p>
+      <div class="row">
+
+      <% albums.map(album=> {%>
+       
+        <div class="col-md-4">
+          <div class="card h-100 p-3 border border-light">
+           
+            <a href="/orders/create/<%= album.album_id %>">
+              <img class="card-img-top" style="width: 100%; height: 40vh; object-fit: contain; "
+                src="/images/<%=album.cover%>">
+            </a>
+            <div class="card-body">
+              <h1 style="font-size: 20px;" class="text-center card-title">
+                <a class="text-dark card-title" style="text-decoration: none;"
+                  href="/orders/create/<%= album.album_id %>">
+                  <%= album.name %>
+                </a>
+              </h1>
+              <p class="text-muted text-center card-text pt-2">Creado el <%= album.date %>
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
+        <%}); %>
 
-      <%}); %>
-
-  </div>
+    </div>
   </div>
 
 
@@ -66,14 +75,14 @@
     <h1 style="font-family: 'Montserrat', sans-serif;
   font-weight: 300; font-size: 40px;">¿Cómo pido mis fotos?</h1>
     <div class="container d-flex flex-column align-items-center py-4">
-    
-        <p class="lead p-2">Lo unico que tenes que hacer es registrarte con los datos que luego seran
-          utiles para que recibas tus fotos, y elegir las fotos que te gustan!</p>
-        <p class="lead p-2">Busca las fotos que te gustaria pedir y solo pulsando el boton añadir al
-          carrito, nos pondremos en contacto con vos para que puedas recibirlas!</p>
-    </div>
-    
-  </section>
-    
 
-      <%- include('./partials/footer') %>
+      <p class="lead p-2">Lo unico que tenes que hacer es registrarte con los datos que luego seran
+        utiles para que recibas tus fotos, y elegir las fotos que te gustan!</p>
+      <p class="lead p-2">Busca las fotos que te gustaria pedir y solo pulsando el boton añadir al
+        carrito, nos pondremos en contacto con vos para que puedas recibirlas!</p>
+    </div>
+
+  </section>
+
+</div>
+  <%- include('./partials/footer') %>

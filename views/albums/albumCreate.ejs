@@ -1,59 +1,74 @@
 <%- include('../partials/header') %>
-    <main style="height: 650px;" role="main">
 
-        <div class="register_box_father">
-            <h1 class="title_body" style="font-family: 'Montserrat', sans-serif;font-weight: 400; font-size: 40px;">
-                Crear album</h1>
-            
-                <form action="/albums/admin/create" class="register_box" enctype="multipart/form-data" method="POST">
+    <div class="d-flex flex-column align-items-center bg-white">
 
+        <h1 class="title-center p-4">
+            Crear album</h1>
 
-                    <div>
-                        <% if (locals.errors && errors.name) { %>
-                          
-                            <span class="barra text-danger">
-                                <%= errors.name.msg %>:
-                            </span>
-                            <% } %>
-                                <label for="name">NOMBRE</label>
-                                <input type="text" name="name">
-                    </div>
+        <form action="/albums/admin/create" class="border-top border-secondary p-5" enctype="multipart/form-data"
+            method="POST">
 
-                    <div>
-                        <% if (locals.errors && errors.date) { %>
-                            <span class="text-danger">
-                                <%= errors.date.msg %>:
-                            </span>
-                            <% } %>
-                                <label for="">FECHA</label>
-                                <input type="date" name="date">
-                    </div>
-                    <% if (locals.errors && errors.cover) { %>
-                        <span class="barra --bs-danger-text-emphasis
-                        ">
-                            <%= errors.cover.msg %>
+                <div class="form-group">
+                    <% if (locals.errors && errors.name) { %>
+
+                        <span class="barra text-danger">
+                            <%= errors.name.msg %>:
                         </span>
                         <% } %>
-                    <div class="input-group mb-3" style="width: 25%;">
+                            <label for="name">NOMBRE</label>
+                            <input type="text" class="form-control" name="name">
+                </div>
+
+                <div class="form-group">
+                    <% if (locals.errors && errors.date) { %>
+                        <span class="text-danger">
+                            <%= errors.date.msg %>:
+                        </span>
+                        <% } %>
+                            <label for="">FECHA</label>
+                            <input type="date" class="form-control" name="date">
+                </div>
+                <% if (locals.errors && errors.cover) { %>
+                    <span class="barra --bs-danger-text-emphasis
+                        ">
+                        <%= errors.cover.msg %>
+                    </span>
+                    <% } %>
+                        <div class="input-group py-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Upload</span>
-                              </div>
-                              <div class="custom-file">
-                                <input class="custom-file-input" type="file" accept=".jpg,.jpeg, .png, .jpeg, .svg" name="cover" id="inputGroupFile01">
+                            </div>
+                            <div class="custom-file">
+                                <input class="custom-file-input" type="file" accept=".jpg,.jpeg, .png, .jpeg, .svg"
+                                    name="cover" id="inputGroupFile01">
                                 <label class="custom-file-label" for="inputGroupFile01">Elegir foto</label>
                             </div>
 
-                    </div>
-                  <div>
-                    <label for="">Link</label>
-                    <input  type="text" name="link">
-                </div>
-                <p>Recuerde que el link de youtube debe tener la pinta <b>https://www.youtube.com/watch?v=Ol-uOWI6xho</b> para poder ser accedido y mostrado publicamente,<br> este link es el que esta arriba en el buscador cuando estas reproduciendo el video como usuario normal</p>
+                        </div>
+                        <p>
+                            <a class="btn btn-primary mt-4 pb-1" data-toggle="collapse" href="#collapseExample" role="button"
+                                aria-expanded="false" aria-controls="collapseExample">
+                               Crear album con video
+                            </a>
+        
+                        </p>
+        
+                        
+                        <div class="collapse" id="collapseExample">
+                            <div class="form-group">
+                                <label for="">Link</label>
+                                <input type="text" class="form-control" name="link">        
+                            </div>
+                            <div>
+                            <p>Recuerde que el link de youtube debe tener la pinta <b>https://www.youtube.com/watch?v=Ol-uOWI6xho</b> para poder ser accedido y mostrado publicamente,<br> este link es el que esta arriba en el buscador cuando estas reproduciendo el video como usuario normal</p>
+                        </div>
+                           
+                        </div>
+                        
+                      
+                        <button style="background-color: #373e98; border: none;" class="btn btn-primary my-3"  type="submit">Crear album</button>
 
-                    <button class="admin-button" type="submit">CREAR</button>
 
-
-                </form>
-            </div>
-    </main>
+        </form>
+    </div>
     <%- include('../partials/footer') %>
