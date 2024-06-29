@@ -1,4 +1,5 @@
 <%- include('../partials/header')  %>
+<div class="container-sm bg-white">
 
 <div style="display: flex; justify-content: center; padding: 20px;" >
   <a class="btn btn-primary p-3 mx-3" style="background-color:#373e98; border: none;" href="/albums/admin/create">Crear album</a>
@@ -8,16 +9,30 @@
 <div class="container-xxl mx-5 d-flex flex-wrap">
 
 <% albums.map(album=> {%>
-  <div class="bg-white pt-4 px-4 d-flex flex-wrap flex-column justify-content-center align-items-center border border-light" style="width: 33%">
-    <a href="/albums/admin/update/<%= album.album_id %>"><img style="width:100%;" src="/images/<%=album.cover%>"></a>
-
-    <div class="d-flex flex-column flex-wrap h-10 p-3 align-items-center">
-    <a style="text-decoration: none;" href="/albums/admin/update/<%= album.album_id %>"><h1 style="font-size: 25px;"><%= album.name %></h1></a>
-    <p>Creado el <%= album.date %></p>
+  <div class="col-md-4">
+    <div class="card h-100 p-3 border border-light">
+     
+ 
+        <a href="/albums/admin/update/<%= album.album_id %>">
+          <img class="card-img-top" style="width: 100%; height: 40vh; object-fit: contain; "
+          src="/images/<%=album.cover%>">
+      </a>
+      <div class="card-body">
+        <h1 style="font-size: 20px;" class="text-center card-title">
+          <a class="text-dark card-title" style="text-decoration: none;"
+          href="/albums/admin/update/<%= album.album_id %>">
+            <%= album.name %>
+          </a>
+        </h1>
+        <p class="text-muted text-center card-text pt-2">Creado el <%= album.date %>
+        </p>
+      </div>
     </div>
-    </div>  
+  </div>
+
 <%}); %>
 
+</div>
 </div>
 </div>
 <%- include('../partials/footer')  %>
