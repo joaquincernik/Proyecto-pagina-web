@@ -53,7 +53,7 @@ const orderController={
         if(!res.locals.isLogged){
             return res.render("order/misOrdenes",{orders:''})
         }else{
-        db.Orders.findAll( {include:[{association:'albums'}]},{
+        db.Orders.findAll( {include:[{association:'albums'}],
            where:{
             email:res.locals.userLogged.email
            }})
