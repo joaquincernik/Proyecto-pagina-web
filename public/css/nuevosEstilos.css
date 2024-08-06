@@ -46,8 +46,31 @@
         resize: none;}
 
   
+        .nav-link {
+          font-size: 0.9rem;
+        }
+
+        .album img{
+          height: 37.5vh;
+        }
+
+        .foto img{
+          height: 37.5vh;
+        }
         @media (max-width: 768px){
         #search-photos{
           display: none;
+        }
+
+        .como-pido{
+          text-align: center;
+        }
+
+        .album img{
+          height: 30vh;
+        }
+
+        .foto img{
+          height: 30vh;
         }
         }

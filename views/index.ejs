@@ -12,7 +12,7 @@
         font-style: normal;font-size: 3.5rem;">Seguinos en nuestras redes sociales</h1>
 
         <div class="row pt-3">
-          <div class="col-md-4">
+          <div class="col-md-4 my-2">
             <div class="d-flex flex-column justify-content-center align-items-center">
 
               <a style="text-decoration: none;" href="https://www.youtube.com/@gustavorosso7650">
@@ -27,7 +27,7 @@
             </div>
           </div>
 
-          <div class="col-md-4">
+          <div class="col-md-4 my-2">
             <div class="d-flex flex-column justify-content-center align-items-center">
               <a style="text-decoration: none;" href="https://www.facebook.com/rossogustavo.com.ar/?fref=ts">
                 <i class="fa fa-brands fa-facebook pt-1 px-2 text-primary" style="font-size: 50px;"></i>
@@ -42,7 +42,7 @@
 
           </div>
 
-          <div class="col-md-4">
+          <div class="col-md-4 my-2">
             <div class="d-flex flex-column justify-content-center align-items-center">
               <a style="text-decoration: none;" class="pt-3 text-secondary"
                 href="https://api.whatsapp.com/send?phone=543537513657">
@@ -73,7 +73,7 @@
         <div class="col-md-8 px-3">
           <h1 style=" font-family: 'Oswald', sans-serif;
         font-weight: 400;
-        font-style: normal; font-size: 3.5rem;" class="pb-5">¿Cómo pido mis fotos?</h1>
+        font-style: normal; font-size: 3.5rem;" class="pb-5 como-pido">¿Cómo pido mis fotos?</h1>
 
           <p class="lead" style="font-size: 1.3rem; line-height: 1.7;">Lo unico que tenes que hacer es
             <b>registrarte</b> con los datos que luego seran
@@ -92,7 +92,7 @@
     <div class="py-5">
       <h1 style=" font-family: 'Bebas Neue', sans-serif;
        font-weight: 400;
-       font-style: center; font-size: 4.5rem;" class="py-3 text-center">¿Ya realizaste tu pedido?</h1>
+       font-style: center; font-size: 4.5rem;" class="py-3 px-2 text-center">¿Ya realizaste tu pedido?</h1>
       <a href="/orders/mis-ordenes" class="d-flex align-items-center justify-content-center" style="text-decoration: none;">
         <button type="button" class="btn btn-outline-primary mt-2 mb-5" style="font-size: 1rem;">
           <div class="d-flex align-items-center">
@@ -106,34 +106,46 @@
   <hr class="hr hr-blurry w-75" style="background-color: #f8f9fc; margin: 0;" />
 
   <div class="mt-4 p-4">
-    <h1 class="text-center py-5" style=" font-family: 'Oswald', sans-serif;
-      font-weight: 400;
-      font-style: normal; font-size: 3rem;">Últimos albumes agregados</h1>
+    <h1 class="text-center py-5" style=" font-family: 'Barlow Semi Condensed', sans-serif;
+    font-weight: 400;
+    font-style: normal;; font-size: 3rem;">Últimos albumes agregados</h1>
     <div class="row">
 
       <% albums.map(album=> {%>
 
-        <div class="col-md-4">
+        <div class="col-md-4 album">
           <div class="card h-100 p-3 border border-light">
 
             <a href="/orders/create/<%= album.album_id %>">
-              <img class="card-img-top" style="width: 100%; height: 40vh; object-fit: contain; "
+              <img class="card-img-top" style="width: 100%;object-fit: contain; "
                 src="/images/<%=album.cover%>">
             </a>
             <div class="card-body">
-              <h1 style="font-size: 20px;" class="text-center card-title">
+              <h1 style="font-size: 1rem;" class="text-center card-title">
                 <a class="text-dark card-title" style="text-decoration: none;"
                   href="/orders/create/<%= album.album_id %>">
                   <%= album.name %>
                 </a>
               </h1>
-              <p class="text-muted text-center card-text pt-2">Creado el <%= album.date %>
+              <p class="text-muted text-center card-text pt-2" style="font-size: 0.8rem;">Creado el <%= album.date %>
               </p>
             </div>
           </div>
         </div>
         <%}); %>
+    </div>
 
+    <div class="py-5">
+      <a href="/albums/list" class="d-flex align-items-center justify-content-center" style="text-decoration: none;">
+        <button type="button" class="btn btn-outline-success mt-1 mb-4" style="font-size: 0.8rem;">
+          <div class="d-flex align-items-center">
+            <span class="material-symbols-outlined">
+              image
+              </span>
+            <p class="pt-3 px-2">Ver todas las fotos</p>
+          </div>
+        </button>
+      </a>
     </div>
   </div>
 
