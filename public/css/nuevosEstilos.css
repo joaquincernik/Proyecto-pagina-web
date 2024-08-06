@@ -57,6 +57,7 @@
         .foto img{
           height: 37.5vh;
         }
+        
         @media (max-width: 768px){
         #search-photos{
           display: none;
