@@ -1,6 +1,6 @@
 <%- include('../partials/header') %>
     <div class="mt-4 bg-white p-1">
-        <h1 class="text-center py-5" id="album_name">
+        <h1 class="text-center py-5" style="font-size: 2.1rem;" id="album_name">
             <%= album.name %>
         </h1>
         <%if(album.link!=null){ %>
@@ -21,12 +21,12 @@
                             <% let contador=1 %>
                                 <div class="row">
                                     <% album.photos.map(photo=> {%>
-                                        <div class="col-md-3">
+                                        <div class="col-md-3 foto">
                                             <div class="card h-100 p-3 border border-light">
                                                 <a style="text-decoration: none;"
                                                     href="/albums/<%= album.album_id %>/carrousel/<%= photo.photo_id %>">
                                                     <img class="card-img-top"
-                                                        style="width: 100%; height: 40vh; object-fit: contain;"
+                                                        style="width: 100%;object-fit: contain;"
                                                         src="/images/<%= photo.link %>">
                                                 </a>
 
@@ -67,8 +67,10 @@
         </div> -->
     </div>
     <% if(!locals.isLogged){ %>
-        <h2 id=" ask-login-h2" style="font-family: 'Montserrat', sans-serif;
-    font-weight: 300;text-align: center;margin: 20px;">Registrate para pedir tus fotos!</h2>
+        <div class="d-flex justify-content-center">
+            <a href="/user/register" class="text-center"><button type="button" class="btn btn-outline-danger mt-2"
+              style="font-size: 1rem;">Registrate para pedir tus fotos</button></a> 
+            </div>   
         <% }else{ %>
             <div class="order-text bg-white p-3">
                 <h2 class="text-center">Fotos a pedir</h2>
