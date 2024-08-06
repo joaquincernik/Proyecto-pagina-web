@@ -1,11 +1,12 @@
 module.exports={
-  "development": {
-    "username": "user",
-    "password": "0101",
+   "development": {
+    "username": "jcernik",
+    "password": "jciua$2023",
     "database": "Proyecto-pagina-web",
     "host": "localhost",
     "dialect": "mysql"
   },
+
   "test": {
     "username": "user",
     "password": "0101",
