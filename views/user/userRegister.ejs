@@ -8,62 +8,67 @@
             <form class="border-top border-secondary p-5" action="/user/register" method="POST">
 
 
-                <% if (locals.errors && errors.name) { %>
-                    <span class="barra text-danger">
-                        <%= errors.name.msg %>
-                    </span>
-                    <% } %>
+               
 
                         <div class="form-row">
-                            <div class="form-group col-md-6 px-3">
+                            <div class="form-group col-md-6">
+                               
                                 <label for="name">Nombre y apellido:</label>
                                 <input id="floatingInput" type="text" name="name" class="form-control"
                                     value="<%= locals.oldData ? oldData.name : null %>">
 
-                                <% if (locals.errors && errors.email) { %>
-                                    <span class="barra text-danger">
-                                        <%= errors.email.msg %>
-                                    </span>
-                                    <% } %>
+                                    <% if (locals.errors && errors.name) { %>
+                                        <span class="barra text-danger">
+                                           <p class="pt-2"><%= errors.name.msg %></p> 
+                                        </span>
+                                        <% } %>
+                             
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="email">Email:</label>
                                 <input id="floatingInput"
-                                    placeholder="Email para ponernos en contacto con el envio de tus fotos" type="email"
+                                    placeholder="" type="email"
                                     class="form-control" name="email"
                                     value="<%= locals.oldData ? oldData.email : null %>">
+                                    <small id="emailHelp" class="form-text muted text-secondary"> Ingresa tu mail para ponernos en contacto con el envio de tus fotos</small>
 
-                                <% if (locals.errors && errors.address) { %>
-                                    <span class="barra text-danger">
-                                        <%= errors.address.msg %>
-                                    </span>
-                                    <% } %>
+                                    <% if (locals.errors && errors.email) { %>
+                                        <span class="barra text-danger py-2">
+                                            <p class="pt-2"><%= errors.email.msg %></p>
+                                        </span>
+                                        <% } %>
+
+                              
                             </div>
                         </div>
 
 
                         <div class="form-row">
-                            <div class="form-group col-md-6 px-3">
+                            <div class="form-group col-md-6">
                                 <label for="address">Direccion:</label>
-                                <input class="form-control" placeholder="Direccion a donde te enviaremos tus fotos"
+                                <input class="form-control" placeholder=""
                                     id="floatingInput" type="text" name="address"
                                     value="<%= locals.oldData ? oldData.address : null %>">
 
-                                <% if (locals.errors && errors.password) { %>
-                                    <span class="barra text-danger">
-                                        <%= errors.password.msg %>
-                                    </span>
-                                    <% } %>
-                                        <% if (locals.errors && errors.email) { %>
-                                            <span class="barra text-danger">
-                                                <%= errors.email.msg %>
-                                            </span>
-                                            <% } %>
+                                    <small id="emailHelp" class="form-text muted text-secondary">Direccion a donde te enviaremos tus fotos</small>
+
+                                    <% if (locals.errors && errors.address) { %>
+                                        <span class="barra text-danger py-2">
+                                            <p class="pt-2"><%= errors.address.msg %></p>
+                                        </span>
+                                        <% } %>
+                               
+                                      
                             </div>
                             <div class="form-group col-md-6">
 
                                 <label for="password">Contraseña:</label>
                                 <input id="floatingInput" type="password" class="form-control" name="password">
+                                <% if (locals.errors && errors.password) { %>
+                                    <span class="barra text-danger py-2">
+                                        <p class="pt-2"><%= errors.password.msg %></p>
+                                    </span>
+                                    <% } %>
                             </div>
                         </div>
 

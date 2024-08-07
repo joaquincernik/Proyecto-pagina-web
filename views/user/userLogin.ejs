@@ -15,29 +15,31 @@
 
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                 <% if (locals.errors && errors.email) { %>
 
-                                    <span class="barra text-danger p-2">
-                                        <%= errors.email.msg %>
-                                    </span>
-                                    <% } %>
 
                                         <label for="floatingInput">Email:</label>
                                         <input class="form-control" id="floatingInput" type="email"
                                             name="email" value="<%= locals.oldData ? oldData.email : null %>">
 
+                                            <% if (locals.errors && errors.email) { %>
+
+                                                <span class="barra text-danger p-2">
+                                                    <p><%= errors.email.msg %></p>
+                                                </span>
+                                                <% } %>
                             </div>
                             <div class="form-group col-md-6">
 
-                                <% if (locals.errors && errors.password) { %>
-
-                                    <span class="barra text-danger p-2">
-                                        <%= errors.password.msg %>
-                                    </span>
-                                    <% } %>
+                              
                                         <label for="password">Contraseña:</label>
                                         <input class="form-control" id="floatingInput"
                                             type="password" name="password">
+                                            <% if (locals.errors && errors.password) { %>
+
+                                                <span class="barra text-danger p-2">
+                                                    <p><%= errors.password.msg %></p>
+                                                </span>
+                                                <% } %>
                             </div>
                         </div>
                         <div class="d-flex justify-content-center p-3">
